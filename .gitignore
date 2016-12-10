@@ -1,6 +1,8 @@
 ﻿/.vs/SenseiGameJam/v14
+Temp/*
+/Library
 **/*.meta
 *.meta
-Temp/*
-/*.csproj
-/Library
+*.sln
+*.csproj
+*.suo
