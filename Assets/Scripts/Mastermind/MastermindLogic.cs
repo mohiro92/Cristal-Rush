@@ -8,10 +8,7 @@ namespace Assets.Scripts.Mastermind
     
     public class MastermindLogic : MonoBehaviour
     {
-        public int CipherLength;
-        public GameObject[] Symbols;
-
-        private Cipher cipher;
+        public Cipher Cipher;
 
         void Start()
         {
@@ -26,21 +23,6 @@ namespace Assets.Scripts.Mastermind
         private void Reset()
         {
             // Get new cipher
-            cipher = new Cipher(Symbols, CipherLength);
-
-            // Destroy all children
-            foreach (Transform child in transform)
-            {
-                Destroy(child);
-            }
-
-            // Add new children
-            for (int i = 0; i < cipher.Length; i++)
-            {
-                GameObject cipherSymbol = Instantiate(cipher.GetSymbolGameObject(i));
-                cipherSymbol.transform.SetParent(transform, false);
-                cipherSymbol.transform.localPosition = new Vector3(i, 0);
-            }
         }
     }
 }

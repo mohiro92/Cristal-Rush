@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scripts/Scenes/PawelScene.unity
+- path: Assets/Scenes/PawelScene.unity
   isLoaded: 1
   isActive: 1

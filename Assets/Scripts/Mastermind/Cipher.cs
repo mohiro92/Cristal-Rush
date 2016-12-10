@@ -7,62 +7,53 @@ using System.Text;
 
 namespace Assets.Scripts.Mastermind
 {
-    class Cipher
+    public class Cipher : MonoBehaviour
     {
-        // Available cipher symbols GameObjects
-        private GameObject[] availableSymbols;
-        // Cipher representation in numbers (indices of availableSymbols)
-        private int[] cipher;
-        public int Length { get { return cipher.Length; }  }
-        // Counted occurences of cipher symbols
+        // Cipher Symbol prefab
+        public Symbol SymbolPrefab;
+        // Length of the cipher
+        public int Length;
+
+        // Cipher made with Symbols
+        private Symbol[] cipherSymbols;
+
+        // Counted occurences of cipher Symbols
         private int[] cipherOccurences;
 
-        private System.Random randomGenerator = new System.Random();
-
-        public Cipher(GameObject[] availableSymbols, int cipherLength)
+        void Start()
         {
-            this.availableSymbols = availableSymbols;
-            RandomizeCipher(cipherLength);
+            RandomizeCipher();
         }
 
-        private void RandomizeCipher(int cipherLength)
+        private void RandomizeCipher()
         {
-            cipher = new int[cipherLength];
-            for (int i = 0; i < cipherLength; i++)
+            cipherSymbols = new Symbol[Length];
+            cipherOccurences = new int[SymbolPrefab.TypeCount()];
+            for (int i = 0; i < Length; i++)
             {
-                cipher[i] = randomGenerator.Next(0, availableSymbols.Length);
+                cipherSymbols[i] = Instantiate(SymbolPrefab).GetComponent<Symbol>();
+                cipherSymbols[i].transform.SetParent(transform, false);
+                cipherSymbols[i].transform.localPosition = new Vector3(i, 0);
+                cipherOccurences[cipherSymbols[i].value]++;
             }
         }
 
-        private void SetCipher(int[] cipher)
+        public Enemies[] CheckCipher(Cipher checkedCipher)
         {
-            if (cipher != null)
-            {
-                cipherOccurences = new int[availableSymbols.Length];
-                this.cipher = cipher;
-                foreach(int symbol in cipher)
-                {
-                    cipherOccurences[symbol]++;
-                }
-            }
-        }
-
-        public Enemies[] CheckCipher(int[] checkedCipher)
-        {
-            Enemies[] enemies = new Enemies[cipher.Length];
+            Enemies[] enemies = new Enemies[cipherSymbols.Length];
             int[] cipherHits = cipherOccurences.ToArray();
-            for (int i = 0; i < cipher.Length; i++)
+            for (int i = 0; i < cipherSymbols.Length; i++)
             {
-                int checkedSymbol = checkedCipher[i];
+                Symbol checkedSymbol = checkedCipher.GetSymbol(i);
 
                 Enemies enemy = Enemies.EasyEnemy;
 
                 // Check if checked symbol is in our cipher
-                if (cipherHits[checkedSymbol] > 0)
+                if (cipherHits[checkedSymbol.value] > 0)
                 {
                     // Symbol occurs in our cipher
 
-                    if (checkedSymbol == cipher[i])
+                    if (checkedSymbol == cipherSymbols[i])
                     {
                         // Symbol occurs in the right spot
                         enemy = Enemies.DifficultEnemy;
@@ -72,16 +63,16 @@ namespace Assets.Scripts.Mastermind
                         // Symbol occurs on wrong spot
                         enemy = Enemies.MediumEnemy;
                     }
-                    cipherHits[(int)checkedSymbol]--;
+                    cipherHits[checkedSymbol.value]--;
                 }
                 enemies[i] = enemy;
             }
             return enemies;
         }
 
-        public GameObject GetSymbolGameObject(int index)
+        public Symbol GetSymbol(int index)
         {
-            return availableSymbols[cipher[index]];
+            return cipherSymbols[index];
         }
     }
 }
