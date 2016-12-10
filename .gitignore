@@ -1,3 +1,5 @@
 ﻿/.vs/SenseiGameJam/v14
 **/*.meta
 Temp/*
+/*.csproj
+/Library
