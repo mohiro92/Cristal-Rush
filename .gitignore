@@ -1,27 +1,2 @@
-Kiedy są dodawane do tbl_invoices
-
-- dodanie faktury zb/zd
-- GS
-- Anforderung
-
-
-brakuje:
-- [amount]
-- [vat]
-- [maut]
-- [brutto]
-- [account_amount]
-- [account_date]
-- [get_invoice_date]
-- [maut]
-- [ref_num]
-- [descriptions]
-- [orderYear]
-- [lp]
-- [customer_id]
-- [customer_number]
-- [inv_year]
-- [customer_inv_num]
-- [storno_inv]
-`
-/.vs/SenseiGameJam/v14
+﻿/.vs/SenseiGameJam/v14
+**/*.meta
