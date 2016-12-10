@@ -1,6 +1,8 @@
 ﻿/.vs/SenseiGameJam/v14
 Temp/*
 /Library
+/Library/*
+/ProjectSettings/*
 **/*.meta
 *.meta
 *.sln
