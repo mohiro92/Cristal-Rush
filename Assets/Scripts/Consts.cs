@@ -10,5 +10,7 @@
         public static readonly string FireStr = "Fire1";
 
         public static readonly string BulletTag = "Bullet";
+
+        public static readonly string PlayerTag = "Player";
     }
 }
