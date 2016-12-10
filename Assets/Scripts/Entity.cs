@@ -9,13 +9,11 @@ public class Entity : MonoBehaviour
     public bool IsDead { get { return _currentHp <= 0; } }
 
     public Animator animator;
-    private Vector3 lastPosition;
 
     // Use this for initialization
     void Start()
     {
         _currentHp = MaxHp;
-        lastPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -63,6 +61,10 @@ public class Entity : MonoBehaviour
                 animator.SetInteger(Consts.EntityAnimationDirection, 3);
             }
         }
-        lastPosition = transform.position;
+    }
+
+    public void Respawn()
+    {
+        _currentHp = MaxHp;
     }
 }
