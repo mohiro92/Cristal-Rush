@@ -1,19 +1,27 @@
 ﻿using System;
+using Assets.Scripts;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     public float Precision = 0.1f;
     public float Speed = 0.5f;
     public float JumpForce = 1f;
+    public float RottationTime = 100f;
+    private float _ratationTimeSum = 0f;
+
 
     private bool _isJumping = true;
     private Vector3 _lastPosition;
+
+    private Vector3 _targetDirection = Vector3.forward;
 
     // Use this for initialization
     void Start()
     {
         _lastPosition = transform.localPosition;
+        _ratationTimeSum = RottationTime;
     }
 
     // Update is called once per frame
@@ -21,10 +29,14 @@ public class PlayerController : MonoBehaviour
     {
         var deltaTime = Time.deltaTime;
 
-        CheckHorizontal(deltaTime);
-        CheckVertical(deltaTime);
+        var dir = Vector3.zero;
+
+        dir += CheckHorizontal(deltaTime);
+        dir += CheckVertical(deltaTime);
+
         CheckJump();
-        CheckShoot();
+        //CheckRotate(deltaTime, dir);
+        CheckShoot(_targetDirection);
 
         _lastPosition = transform.position;
     }
@@ -41,31 +53,59 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckHorizontal(float deltaTime)
+    private void CheckRotate(float deltaTime, Vector3 dir)
     {
-        var axisVal = Input.GetAxis("Horizontal");
-        var sign = Mathf.Sign(axisVal);
-
-        if (Mathf.Abs(axisVal) > Precision)
+        if (Math.Abs(dir.x) > Consts.Eps || Math.Abs(dir.y) > Consts.Eps || Math.Abs(dir.z) > Consts.Eps)
         {
-            transform.position += new Vector3(Speed * sign * deltaTime, 0f, 0f);
+            _targetDirection = Vector3.Normalize(dir);
+            _ratationTimeSum = 0f;
         }
+
+        var maxDeg = 180f;
+        _ratationTimeSum += deltaTime;
+        var sinArg = Mathf.PI / .2f * Mathf.Clamp(_ratationTimeSum, 0f, RottationTime) / RottationTime;
+        var rotation = _targetDirection * maxDeg * Mathf.Sin(sinArg);
+
+        transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
     }
 
-    private void CheckVertical(float deltaTime)
+    private Vector3 CheckHorizontal(float deltaTime)
     {
-        var axisVal = Input.GetAxis("Vertical");
+        var axisVal = Input.GetAxis(Consts.HorizontalStr);
         var sign = Mathf.Sign(axisVal);
 
+        var result = Vector3.zero;
         if (Mathf.Abs(axisVal) > Precision)
         {
-            transform.position += new Vector3(0f, 0f, Speed * sign * deltaTime);
+            var direction = Vector3.right * sign;
+
+            transform.position += direction * Speed * deltaTime;
+            result += direction;
         }
+
+        return result;
+    }
+
+    private Vector3 CheckVertical(float deltaTime)
+    {
+        var axisVal = Input.GetAxis(Consts.VerticalStr);
+        var sign = Mathf.Sign(axisVal);
+
+        var result = Vector3.zero;
+        if (Mathf.Abs(axisVal) > Precision)
+        {
+            var direction = Vector3.forward*sign;
+
+            transform.position += direction*Speed*deltaTime;
+            result += direction;
+        }
+
+        return result;
     }
 
     private void CheckJump()
     {
-        if (Input.GetButton("Jump") && !_isJumping)
+        if (Input.GetButton(Consts.JumpStr) && !_isJumping)
         {
             Jump();
         }
@@ -82,15 +122,15 @@ public class PlayerController : MonoBehaviour
         body.AddForce(Vector3.up * JumpForce);
     }
 
-    private void CheckShoot()
+    private void CheckShoot(Vector3 dir)
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton(Consts.FireStr))
         {
-            var entity = GetComponent<Entity>();
+            var entity = GetComponentInChildren<Entity>();
             if (entity == null)
                 throw new NullReferenceException("GameObject needs Entity component");
 
-            entity.Shoot(transform.position - _lastPosition);
+            entity.Shoot(_targetDirection);
         }
     }
 }
