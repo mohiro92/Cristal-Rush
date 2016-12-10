@@ -1,0 +1,21 @@
+﻿using UnityEngine;
+using System.Collections;
+
+namespace Assets.Scripts.Mastermind
+{
+    public class CipherCheck : MonoBehaviour
+    {
+        public MastermindLogic MastermindLogic;
+
+        void OnCollisionEnter(Collision col)
+        {
+            if (col.gameObject.tag.Equals(Constants.BulletTag))
+            {
+                MastermindLogic.CheckCipher();
+            } else
+            {
+                print(col.gameObject.tag);
+            }
+        }
+    }
+}

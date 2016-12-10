@@ -33,9 +33,8 @@ namespace Assets.Scripts.Mastermind
 
         void OnCollisionEnter(Collision col)
         {
-            print("Collision");
-            //if (col.gameObject.tag.Equals(Constants.BulletTag))
-            //{
+            if (col.gameObject.tag.Equals(Constants.BulletTag))
+            {
             print(col.transform.position.z + " " + transform.position.z);
                 if (col.transform.position.z > transform.position.z)
                 {
@@ -44,7 +43,7 @@ namespace Assets.Scripts.Mastermind
                 {
                     Previous();
                 }
-            //}
+            }
         }
 
         public void RandomizeValue()
@@ -71,7 +70,6 @@ namespace Assets.Scripts.Mastermind
         private void Next()
         {
             int newValue = (value + 1) % availableSymbols.Count;
-            print("Next " + newValue);
             Activate(newValue);
         }
 
@@ -82,7 +80,6 @@ namespace Assets.Scripts.Mastermind
             {
                 newValue = availableSymbols.Count - 1;
             }
-            print("Previous " + newValue);
             Activate(newValue);
         }
         

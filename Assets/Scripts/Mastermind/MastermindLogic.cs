@@ -8,7 +8,12 @@ namespace Assets.Scripts.Mastermind
     
     public class MastermindLogic : MonoBehaviour
     {
-        public Cipher Cipher;
+        public Cipher CipherPrefab;
+        public CipherCheck CipherCheckPrefab;
+
+        private CipherCheck cipherCheck;
+        private Cipher originalCipher;
+        private Cipher checkedCipher;
 
         void Start()
         {
@@ -22,7 +27,21 @@ namespace Assets.Scripts.Mastermind
 
         private void Reset()
         {
-            // Get new cipher
+            originalCipher = Instantiate(CipherPrefab);
+            originalCipher.transform.SetParent(transform, false);
+            originalCipher.gameObject.SetActive(false);
+
+            checkedCipher = Instantiate(CipherPrefab);
+            checkedCipher.transform.SetParent(transform, false);
+
+            cipherCheck = Instantiate(CipherCheckPrefab);
+            cipherCheck.transform.SetParent(transform, false);
+            cipherCheck.transform.localPosition = new Vector3(- CipherPrefab.Length / 2 - 1, 0);
+        }
+
+        public void CheckCipher()
+        {
+            print("Check cipher");
         }
     }
 }

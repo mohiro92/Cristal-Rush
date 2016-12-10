@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Constants.cs" />
      <Compile Include="Assets\Scripts\Entity.cs" />
      <Compile Include="Assets\Scripts\Mastermind\Cipher.cs" />
+     <Compile Include="Assets\Scripts\Mastermind\CipherCheck.cs" />
      <Compile Include="Assets\Scripts\Mastermind\MastermindLogic.cs" />
      <Compile Include="Assets\Scripts\Mastermind\Symbol.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

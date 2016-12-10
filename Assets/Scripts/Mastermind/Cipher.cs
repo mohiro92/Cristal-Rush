@@ -33,7 +33,7 @@ namespace Assets.Scripts.Mastermind
             {
                 cipherSymbols[i] = Instantiate(SymbolPrefab).GetComponent<Symbol>();
                 cipherSymbols[i].transform.SetParent(transform, false);
-                cipherSymbols[i].transform.localPosition = new Vector3(i, 0);
+                cipherSymbols[i].transform.localPosition = new Vector3(- Length / 2 + i, 0);
                 cipherOccurences[cipherSymbols[i].value]++;
             }
         }
