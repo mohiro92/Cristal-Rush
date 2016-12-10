@@ -11,8 +11,8 @@ public class EnemyController : MonoBehaviour
     public GameObject Target;
     public float NavigationTolerance = 0.5f;
 
-    public float MinShootCooldown = 100f;
-    public float MaxValueToAddShootCooldown = 50f;
+    public float MinShootCooldown = 2f;
+    public float MaxValueToAddShootCooldown = 2f;
 
     private float _minShootCooldownValue = -1f;
     private float _shootCooldownValue = 0f;
