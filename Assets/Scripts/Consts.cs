@@ -8,5 +8,7 @@
         public static readonly string VerticalStr = "Vertical";
         public static readonly string JumpStr = "Jump";
         public static readonly string FireStr = "Fire1";
+
+        public static readonly string BulletTag = "Bullet";
     }
 }

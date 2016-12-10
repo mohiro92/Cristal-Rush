@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Assets.Scripts.Randoms;
+using Assets.Scripts.Mastermind;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -43,8 +44,7 @@ public class Bullet : MonoBehaviour
         if (Physics.Raycast(transform.position, _direction, move.magnitude))
         {
             var firstHit = Physics.RaycastAll(transform.position, _direction, move.magnitude).First();
-            var entity = firstHit.collider.GetComponent<Entity>();
-            Hit(entity);
+            Hit(firstHit.collider);
             return;
         }
 
@@ -56,17 +56,16 @@ public class Bullet : MonoBehaviour
         foreach (ContactPoint contact in collision.contacts)
         {
             Debug.DrawRay(contact.point, contact.normal, Color.white);
-
-            var entity = contact.otherCollider.GetComponent<Entity>();
-            Hit(entity);
+            
+            Hit(contact.otherCollider);
         }
 
     }
 
     private readonly object _hitLock = new object();
-    private void Hit(Entity entity)
+    private void Hit(Collider collider)
     {
-
+        var entity = collider.GetComponent<Entity>();
         lock (_hitLock)
         {
             if (_isDestroyed)
@@ -76,6 +75,9 @@ public class Bullet : MonoBehaviour
         }
 
         if (entity != null) entity.Hit(MinVal + BulletRandom.NextFloat(Strength));
+
+        var mastermindSymbol = collider.GetComponent<Symbol>();
+        if (mastermindSymbol) mastermindSymbol.BulletHit(transform);
     }
 
     private void SelfDestroy()

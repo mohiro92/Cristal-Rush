@@ -31,21 +31,6 @@ namespace Assets.Scripts.Mastermind
 
         }
 
-        void OnCollisionEnter(Collision col)
-        {
-            if (col.gameObject.tag.Equals(Constants.BulletTag))
-            {
-            print(col.transform.position.z + " " + transform.position.z);
-                if (col.transform.position.z > transform.position.z)
-                {
-                    Next();
-                } else
-                {
-                    Previous();
-                }
-            }
-        }
-
         public void RandomizeValue()
         {
             value = randomGenerator.Next(0, availableSymbols.Count);
@@ -93,6 +78,22 @@ namespace Assets.Scripts.Mastermind
             if (value < transform.childCount && value >= 0)
             {
                 transform.GetChild(value).gameObject.SetActive(true);
+            }
+        }
+
+        public void BulletHit(Transform bulletTransform)
+        {
+            if (bulletTransform.gameObject.tag.Equals(Consts.BulletTag))
+            {
+                print(bulletTransform.position.z + " " + transform.position.z);
+                if (bulletTransform.position.z > transform.position.z)
+                {
+                    Next();
+                }
+                else
+                {
+                    Previous();
+                }
             }
         }
     }

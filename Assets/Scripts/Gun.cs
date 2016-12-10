@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public Vector3 BulletSpownOffset = Vector3.zero;
+    public Vector3 BulletSpawnOffset = Vector3.zero;
     public Bullet Bullet;
     public int ShootCooldown = 30;
 
@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour
 
             var bullet = Instantiate(Bullet);
 
-            var spawnPosition = transform.position + BulletSpownOffset;
+            var spawnPosition = transform.position + BulletSpawnOffset;
             Debug.Log(string.Format("bullet init pos = {0}", spawnPosition));
             bullet.Init(direction, spawnPosition);
         }

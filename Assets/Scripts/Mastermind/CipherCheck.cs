@@ -9,7 +9,7 @@ namespace Assets.Scripts.Mastermind
 
         void OnCollisionEnter(Collision col)
         {
-            if (col.gameObject.tag.Equals(Constants.BulletTag))
+            if (col.gameObject.tag.Equals(Consts.BulletTag))
             {
                 MastermindLogic.CheckCipher();
             } else

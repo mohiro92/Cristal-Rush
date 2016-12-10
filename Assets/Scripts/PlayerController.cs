@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _isJumping = true;
     private Vector3 _lastPosition;
+    private float _lastSign = 1f;
 
     private Vector3 _targetDirection = Vector3.forward;
 
@@ -74,7 +75,10 @@ public class PlayerController : MonoBehaviour
     {
         var result = _targetDirection;
 
-        var sing = Math.Abs(dir.x) > Consts.Eps ? Mathf.Sign(dir.x) : 1f;
+        if(Math.Abs(dir.x) > Consts.Eps)
+        {
+            _lastSign = Mathf.Sign(dir.x);
+        }
 
         if (Math.Abs(dir.x) > Consts.Eps || Math.Abs(dir.y) > Consts.Eps || Math.Abs(dir.z) > Consts.Eps)
         {
@@ -87,10 +91,10 @@ public class PlayerController : MonoBehaviour
         //var sinArg = Mathf.PI / .2f * Mathf.Clamp(_ratationTimeSum, 0f, RottationTime) / RottationTime;
         //var rotation = _targetDirection * maxDeg * Mathf.Sin(sinArg);
 
-        var angle = Vector3.Angle(Vector3.forward, result) * sing;
+        var angle = Vector3.Angle(Vector3.forward, result) * _lastSign;
 
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
+            
         return result;
     }
 
