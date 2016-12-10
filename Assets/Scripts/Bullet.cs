@@ -1,36 +1,53 @@
-﻿using Assets.Scripts.Randoms;
+﻿using System.Linq;
+using Assets.Scripts.Randoms;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float MinVal = 1f;
-    public float Strength = 5f;
+    public int Strength = 5;
     public float SelfDestructionDist = 50f;
+    public float Speed = 1f;
+
 
     private Vector3 _startPosition;
     private Vector3 _direction;
+    private bool _isDestroyed = false;
 
     public void Init(Vector3 direction, Vector3? position = null)
     {
         _direction = direction;
+        _direction.Normalize();
         SetStartPosition(position ?? transform.position);
     }
 
     public void SetStartPosition(Vector3 position)
     {
+        Debug.Log(position);
         _startPosition = position;
+        transform.position = _startPosition;
     }
-
-    // Use this for initialization
-    void Start()
-    {
-        SetStartPosition(transform.position);
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        
+        if ((transform.position - _startPosition).magnitude > SelfDestructionDist)
+        {
+            SelfDestroy();
+            return;
+        }
+
+        var move = _direction * Speed * Time.deltaTime;
+
+        if (Physics.Raycast(transform.position, _direction, move.magnitude))
+        {
+            var firstHit = Physics.RaycastAll(transform.position, _direction, move.magnitude).First();
+            var entity = firstHit.collider.GetComponent<Entity>();
+            Hit(entity);
+            return;
+        }
+
+        transform.position += move;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -43,15 +60,28 @@ public class Bullet : MonoBehaviour
             Hit(entity);
         }
 
-        // if needed place here OnDestroy method
-        Destroy(this.gameObject);
     }
 
+    private readonly object _hitLock = new object();
     private void Hit(Entity entity)
     {
-        if(entity == null)
-            return;
+        lock (_hitLock)
+        {
+            if (_isDestroyed)
+                return;
 
-        entity.Hit(MinVal + BulletRandom.NextFloat);
+            if (entity == null)
+                return;
+        }
+
+        entity.Hit(MinVal + BulletRandom.NextFloat(Strength));
+        SelfDestroy();
+    }
+
+    private void SelfDestroy()
+    {
+        _isDestroyed = true;
+        // if needed place here OnDestroy method
+        DestroyObject(this.gameObject);
     }
 }

@@ -4,7 +4,7 @@ namespace Assets.Scripts.Randoms
 {
     public static class BulletRandom
     {
-        private static int? _seed = Guid.NewGuid().GetHashCode();
+        private static int _seed = DateTime.Now.Hour;
         private static Random _rand;
 
         public static Random Instance
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Randoms
             {
                 if (_rand == null)
                 {
-                    _rand = _seed.HasValue ? new Random(_seed.Value) : new Random();
+                    _rand = new Random(Seed);
                 }
 
                 return _rand;
@@ -22,18 +22,21 @@ namespace Assets.Scripts.Randoms
 
         public static int Seed
         {
-            get { return _seed ?? default(int); }
+            get
+            {
+                return _seed;
+            }
             set
             {
                 _seed = value;
 
-                _rand = _seed.HasValue ? new Random(_seed.Value) : new Random();
+                _rand = new Random(Seed);
             }
         }
 
-        public static float NextFloat
+        public static float NextFloat(int maxValue)
         {
-            get { return (float) _rand.NextDouble(); }
+            return (float)Instance.NextDouble() *  (1 + Instance.Next(maxValue));
         }
     }
 }
