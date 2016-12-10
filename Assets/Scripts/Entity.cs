@@ -46,26 +46,21 @@ public class Entity : MonoBehaviour
     {
         if (animator)
         {
-            if (transform.rotation.eulerAngles.y == 90)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 1);
-                print("1");
-            }
-            else if (transform.rotation.eulerAngles.y == 270)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 3);
-                print("3");
-            }
-
-            if (transform.rotation.eulerAngles.y == 0)
+            if (transform.rotation.eulerAngles.y < 45 || transform.rotation.eulerAngles.y >= 315)
             {
                 animator.SetInteger(Consts.EntityAnimationDirection, 0);
-                print("2");
             }
-            else if (transform.rotation.eulerAngles.y == 180)
+            else if (transform.rotation.eulerAngles.y > 45 && transform.rotation.eulerAngles.y <= 135)
+            {
+                animator.SetInteger(Consts.EntityAnimationDirection, 1);
+            }
+            else if (transform.rotation.eulerAngles.y > 135 && transform.rotation.eulerAngles.y <= 225)
             {
                 animator.SetInteger(Consts.EntityAnimationDirection, 2);
-                print("0");
+            }
+            else if (transform.rotation.eulerAngles.y > 225 && transform.rotation.eulerAngles.y <= 315)
+            {
+                animator.SetInteger(Consts.EntityAnimationDirection, 3);
             }
         }
         lastPosition = transform.position;

@@ -12,6 +12,8 @@ namespace Assets.Scripts.Mastermind
         public List<GameObject> availableSymbols;
         // Actual value of symbol
         public int value;
+        // Crystal explosion prefab
+        public GameObject ExplosionPrefab;
 
         // Use this for initialization
         void Start()
@@ -94,6 +96,9 @@ namespace Assets.Scripts.Mastermind
                 {
                     Previous();
                 }
+                GameObject explosionObject = Instantiate(ExplosionPrefab);
+                explosionObject.transform.Translate(transform.position);
+                Destroy(explosionObject, 2.0f);
             }
         }
     }
