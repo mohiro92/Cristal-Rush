@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/PawelScene.unity
+- path: Assets/Scenes/HackNSlashTest.unity
   isLoaded: 1
   isActive: 1
