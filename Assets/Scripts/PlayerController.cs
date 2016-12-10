@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 1f;
 
     private bool _isJumping = true;
+    private Vector3 _lastPosition;
 
     // Use this for initialization
     void Start()
     {
-
+        _lastPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
         CheckHorizontal(deltaTime);
         CheckVertical(deltaTime);
         CheckJump();
+        CheckShoot();
+
+        _lastPosition = transform.position;
     }
 
     // on colision enter sets _isJumpiong to false
@@ -73,8 +77,20 @@ public class PlayerController : MonoBehaviour
 
         var body = GetComponent<Rigidbody>();
         if(body == null)
-            throw new NullReferenceException("GameObject needs rigidbody component");
+            throw new NullReferenceException("GameObject needs Rigidbody component");
 
         body.AddForce(Vector3.up * JumpForce);
+    }
+
+    private void CheckShoot()
+    {
+        if (Input.GetButton("Fire1"))
+        {
+            var entity = GetComponent<Entity>();
+            if (entity == null)
+                throw new NullReferenceException("GameObject needs Entity component");
+
+            entity.Shoot(transform.position - _lastPosition);
+        }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-
     // Use this for initialization
     void Start()
     {
@@ -15,5 +12,15 @@ public class Entity : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Shoot(Vector3 direction)
+    {
+        Debug.Log(string.Format("Entity shoot. Direction: {0}", direction));
+    }
+
+    public void Hit(float val)
+    {
+        Debug.Log(string.Format("Entity.Hit({0})", val));
     }
 }
