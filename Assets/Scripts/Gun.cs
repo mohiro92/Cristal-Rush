@@ -19,7 +19,10 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //if (Input.GetButton("Fire1"))
+        //{
+        //    Shoot(Vector3.forward);
+        //}
     }
 
     public void Shoot(Vector3 direction)
@@ -31,7 +34,10 @@ public class Gun : MonoBehaviour
             _lastShootDateTime = DateTime.Now;
 
             var bullet = Instantiate(Bullet);
-            bullet.Init(direction, transform.position + BulletSpownOffset);
+
+            var spawnPosition = transform.position + BulletSpownOffset;
+            Debug.Log(string.Format("bullet init pos = {0}", spawnPosition));
+            bullet.Init(direction, spawnPosition);
         }
     }
 }

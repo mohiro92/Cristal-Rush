@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour
         _direction = direction;
         _direction.Normalize();
         SetStartPosition(position ?? transform.position);
+
+        this.gameObject.SetActive(true);
     }
 
     public void SetStartPosition(Vector3 position)

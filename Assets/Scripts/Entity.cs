@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour
             return;
         }
 
-        Debug.Log(string.Format("Entity shoot. Direction: {0}", direction));
+        //Debug.Log(string.Format("Entity shoot. Direction: {0}", direction));
         Gun.Shoot(direction);
     }
 
