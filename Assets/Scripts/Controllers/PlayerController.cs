@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts;
+using Assets.Scripts.Utilities;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,22 +9,12 @@ public class PlayerController : MonoBehaviour
     public float Precision = 0.1f;
     public float Speed = 0.5f;
     public float JumpForce = 1f;
-    public float RottationTime = 100f;
-    private float _ratationTimeSum = 0f;
-
 
     private bool _isJumping = true;
-    private Vector3 _lastPosition;
     private float _lastSign = 1f;
 
     private Vector3 _targetDirection = Vector3.forward;
-
-    // Use this for initialization
-    void Start()
-    {
-        _lastPosition = transform.localPosition;
-        _ratationTimeSum = RottationTime;
-    }
+    private int _id = -1;
 
     // Update is called once per frame
     void Update()
@@ -40,8 +31,6 @@ public class PlayerController : MonoBehaviour
         CheckJump();
         _targetDirection = CheckRotate(deltaTime, dir);
         CheckShoot(_targetDirection);
-
-        _lastPosition = transform.position;
     }
 
     // on colision enter sets _isJumpiong to false
@@ -75,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         var result = _targetDirection;
 
-        if(Math.Abs(dir.x) > Consts.Eps)
+        if (Math.Abs(dir.x) > Consts.Eps)
         {
             _lastSign = Mathf.Sign(dir.x);
         }
@@ -83,24 +72,18 @@ public class PlayerController : MonoBehaviour
         if (Math.Abs(dir.x) > Consts.Eps || Math.Abs(dir.y) > Consts.Eps || Math.Abs(dir.z) > Consts.Eps)
         {
             result = Vector3.Normalize(dir);
-            _ratationTimeSum = 0f;
         }
-
-        //var maxDeg = 180f;
-        //_ratationTimeSum += deltaTime;
-        //var sinArg = Mathf.PI / .2f * Mathf.Clamp(_ratationTimeSum, 0f, RottationTime) / RottationTime;
-        //var rotation = _targetDirection * maxDeg * Mathf.Sin(sinArg);
 
         var angle = Vector3.Angle(Vector3.forward, result) * _lastSign;
 
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            
+
         return result;
     }
 
     private Vector3 CheckHorizontal(float deltaTime)
     {
-        var axisVal = Input.GetAxis(Consts.HorizontalStr);
+        var axisVal = Input.GetAxis(InputHelper.GetAxisName(Consts.HorizontalPrefixStr, _id));
         var sign = Mathf.Sign(axisVal);
 
         var result = Vector3.zero;
@@ -117,15 +100,15 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 CheckVertical(float deltaTime)
     {
-        var axisVal = Input.GetAxis(Consts.VerticalStr);
+        var axisVal = Input.GetAxis(InputHelper.GetAxisName(Consts.VerticalPrefixStr, _id));
         var sign = Mathf.Sign(axisVal);
 
         var result = Vector3.zero;
         if (Mathf.Abs(axisVal) > Precision)
         {
-            var direction = Vector3.forward*sign;
+            var direction = Vector3.forward * sign;
 
-            transform.position += direction*Speed*deltaTime;
+            transform.position += direction * Speed * deltaTime;
             result += direction;
         }
 
@@ -134,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckJump()
     {
-        if (Input.GetButton(Consts.JumpStr) && !_isJumping)
+        if (Input.GetButton(InputHelper.GetAxisName(Consts.JumpPrefixStr, _id)) && !_isJumping)
         {
             Jump();
         }
@@ -145,7 +128,7 @@ public class PlayerController : MonoBehaviour
         _isJumping = true;
 
         var body = GetComponent<Rigidbody>();
-        if(body == null)
+        if (body == null)
             throw new NullReferenceException("GameObject needs Rigidbody component");
 
         body.AddForce(Vector3.up * JumpForce);
@@ -153,13 +136,35 @@ public class PlayerController : MonoBehaviour
 
     private void CheckShoot(Vector3 dir)
     {
-        if (Input.GetButton(Consts.FireStr))
+        if (Input.GetButton(InputHelper.GetAxisName(Consts.FirePrefixStr, _id)))
         {
             var entity = GetComponentInChildren<Entity>();
             if (entity == null)
                 throw new NullReferenceException("GameObject needs Entity component");
 
-            entity.Shoot(_targetDirection);
+            entity.Shoot(dir);
         }
+    }
+
+    public void Respawn(Vector3 startPosition, float deltaTime)
+    {
+        //TODO: delta for control respawnCooldown; -- delta is wrong! should be actual time in ms
+
+        transform.position = startPosition;
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+        var entity = GetComponentInChildren<Entity>();
+        if (entity == null)
+            throw new NullReferenceException("GameObject needs Entity component");
+
+        entity.Respawn();
+
+        gameObject.SetActive(true);
+    }
+
+    public void SetId(int id)
+    {
+        _id = id;
+        gameObject.name = string.Format("Player {0}", _id);
     }
 }
