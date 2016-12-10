@@ -16,15 +16,6 @@ public class Gun : MonoBehaviour
             throw new NullReferenceException("Bullet should be not null");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetButton("Fire1"))
-        //{
-        //    Shoot(Vector3.forward);
-        //}
-    }
-
     public void Shoot(Vector3 direction)
     {
         int lastTime = (DateTime.Now - (_lastShootDateTime ?? DateTime.Now)).Milliseconds;

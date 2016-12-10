@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         dir += CheckVertical(deltaTime);
 
         CheckJump();
-        //CheckRotate(deltaTime, dir);
+        _targetDirection = CheckRotate(deltaTime, dir);
         CheckShoot(_targetDirection);
 
         _lastPosition = transform.position;
@@ -53,20 +53,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckRotate(float deltaTime, Vector3 dir)
+    private Vector3 CheckRotate(float deltaTime, Vector3 dir)
     {
+        var result = _targetDirection;
+
+        var sing = Math.Abs(dir.x) > Consts.Eps ? Mathf.Sign(dir.x) : 1f;
+
         if (Math.Abs(dir.x) > Consts.Eps || Math.Abs(dir.y) > Consts.Eps || Math.Abs(dir.z) > Consts.Eps)
         {
-            _targetDirection = Vector3.Normalize(dir);
+            result = Vector3.Normalize(dir);
             _ratationTimeSum = 0f;
         }
 
-        var maxDeg = 180f;
-        _ratationTimeSum += deltaTime;
-        var sinArg = Mathf.PI / .2f * Mathf.Clamp(_ratationTimeSum, 0f, RottationTime) / RottationTime;
-        var rotation = _targetDirection * maxDeg * Mathf.Sin(sinArg);
+        //var maxDeg = 180f;
+        //_ratationTimeSum += deltaTime;
+        //var sinArg = Mathf.PI / .2f * Mathf.Clamp(_ratationTimeSum, 0f, RottationTime) / RottationTime;
+        //var rotation = _targetDirection * maxDeg * Mathf.Sin(sinArg);
 
-        transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+        var angle = Vector3.Angle(Vector3.forward, result) * sing;
+
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+        return result;
     }
 
     private Vector3 CheckHorizontal(float deltaTime)

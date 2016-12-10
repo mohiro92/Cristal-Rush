@@ -25,7 +25,6 @@ public class Bullet : MonoBehaviour
 
     public void SetStartPosition(Vector3 position)
     {
-        Debug.Log(position);
         _startPosition = position;
         transform.position = _startPosition;
     }
@@ -67,17 +66,16 @@ public class Bullet : MonoBehaviour
     private readonly object _hitLock = new object();
     private void Hit(Entity entity)
     {
+
         lock (_hitLock)
         {
             if (_isDestroyed)
                 return;
 
-            if (entity == null)
-                return;
+            SelfDestroy();
         }
 
-        entity.Hit(MinVal + BulletRandom.NextFloat(Strength));
-        SelfDestroy();
+        if (entity != null) entity.Hit(MinVal + BulletRandom.NextFloat(Strength));
     }
 
     private void SelfDestroy()

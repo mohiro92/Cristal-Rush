@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{803395B9-E309-6C48-35A0-5250729E2D40}") = "SenseiGameJam", "Assembly-CSharp.csproj", "{742E2DEF-AE35-87EB-7BAA-7915FE804042}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenseiGameJam", "SenseiGameJam.csproj", "{D370A49A-3189-73F6-F818-D447C7466DC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{742E2DEF-AE35-87EB-7BAA-7915FE804042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742E2DEF-AE35-87EB-7BAA-7915FE804042}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742E2DEF-AE35-87EB-7BAA-7915FE804042}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742E2DEF-AE35-87EB-7BAA-7915FE804042}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D370A49A-3189-73F6-F818-D447C7466DC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D370A49A-3189-73F6-F818-D447C7466DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D370A49A-3189-73F6-F818-D447C7466DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D370A49A-3189-73F6-F818-D447C7466DC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
