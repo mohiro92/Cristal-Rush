@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         var deltaTime = Time.deltaTime;
 
+        CheckDead();
+
         var dir = Vector3.zero;
 
         dir += CheckHorizontal(deltaTime);
@@ -51,6 +53,21 @@ public class PlayerController : MonoBehaviour
             if (contact.point.y < transform.position.y)
                 _isJumping = false;
         }
+    }
+
+    private void CheckDead()
+    {
+        var entity = GetComponentInChildren<Entity>();
+        if (entity == null)
+            throw new NullReferenceException("GameObject needs Entity component");
+
+        if (entity.IsDead)
+            Kill();
+    }
+
+    private void Kill()
+    {
+        gameObject.SetActive(false);
     }
 
     private Vector3 CheckRotate(float deltaTime, Vector3 dir)

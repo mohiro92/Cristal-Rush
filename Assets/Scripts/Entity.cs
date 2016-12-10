@@ -3,11 +3,14 @@
 public class Entity : MonoBehaviour
 {
     public Gun Gun;
+    public float MaxHp  = 100f;
+    public float _currentHp;
+    public bool IsDead { get { return _currentHp <= 0; } }
 
     // Use this for initialization
     void Start()
     {
-
+        _currentHp = MaxHp;
     }
 
     // Update is called once per frame
@@ -30,5 +33,7 @@ public class Entity : MonoBehaviour
     public void Hit(float val)
     {
         Debug.Log(string.Format("Entity.Hit({0})", val));
+
+        _currentHp -= val;
     }
 }
