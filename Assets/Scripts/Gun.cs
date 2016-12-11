@@ -24,9 +24,9 @@ public class Gun : MonoBehaviour
         {
             _lastShootDateTime = DateTime.Now;
 
-            var bullet = Instantiate(Bullet);
-
             var spawnPosition = transform.position + BulletSpawnOffset;
+            var bullet = Instantiate(Bullet, spawnPosition, Bullet.transform.rotation);
+
             bullet.Init(direction, spawnPosition);
         }
     }
