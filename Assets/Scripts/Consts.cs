@@ -2,7 +2,7 @@
 {
     public static class Consts
     {
-        public static readonly float Eps = 0.001f;
+        public static readonly float Eps = 0.01f;
 
         public static readonly int KeyBoardId = -1;
 
