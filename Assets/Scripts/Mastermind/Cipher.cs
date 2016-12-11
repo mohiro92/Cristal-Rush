@@ -20,7 +20,7 @@ namespace Assets.Scripts.Mastermind
         // Counted occurences of cipher Symbols
         private int[] cipherOccurences;
 
-        void Start()
+        void Awake()
         {
             RandomizeCipher();
         }

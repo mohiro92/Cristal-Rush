@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Scripts;
 using System.Collections;
 using System.Linq;
 
@@ -10,10 +11,11 @@ namespace Assets.Scripts.Mastermind
     {
         public Cipher CipherPrefab;
         public CipherCheck CipherCheck;
+        public SpawnPoints SpawnPoints;
 
-        private Cipher originalCipher;
+        public Cipher originalCipher { get; private set; }
         private Cipher checkedCipher;
-
+        
         void Start()
         {
             Reset();
@@ -34,12 +36,13 @@ namespace Assets.Scripts.Mastermind
             checkedCipher.transform.SetParent(transform, false);
 
             CipherCheck.transform.SetParent(transform, false);
-            CipherCheck.transform.localPosition = new Vector3(- CipherPrefab.Length / 2 - 1, 0);
+
+            SpawnPoints.SetLogic(this);
         }
 
         public void CheckCipher()
         {
-            print("Check cipher");
+                SpawnPoints.SpawnEnemies(originalCipher.CheckCipher(checkedCipher));
         }
     }
 }

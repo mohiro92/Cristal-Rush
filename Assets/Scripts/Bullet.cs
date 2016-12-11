@@ -84,6 +84,6 @@ public class Bullet : MonoBehaviour
     {
         _isDestroyed = true;
         // if needed place here OnDestroy method
-        DestroyObject(this.gameObject);
+        DestroyObject(gameObject);
     }
 }

@@ -6,11 +6,12 @@ namespace Assets.Scripts.Mastermind
     public class CipherCheck : MonoBehaviour
     {
         public MastermindLogic MastermindLogic;
-
+        
         void OnCollisionEnter(Collision col)
         {
-            if (col.gameObject.tag.Equals(Consts.BulletTag))
+            if (col.gameObject.CompareTag(Consts.BulletTag))
             {
+                print("OnCollisionEnter");
                 MastermindLogic.CheckCipher();
             } else
             {
