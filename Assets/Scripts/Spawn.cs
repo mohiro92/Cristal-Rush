@@ -35,7 +35,6 @@ public class Spawn : MonoBehaviour {
 
     private void RotateRandom()
     {
-        print("ROtate random");
         transform.eulerAngles = new Vector3(0, Random.Range(0, 360));
         //transform.eulerAngles = Vector3.Reflect(transform.eulerAngles, transform.forward);
     }
