@@ -7,16 +7,9 @@ namespace Assets.Scripts.Mastermind
     {
         public MastermindLogic MastermindLogic;
         
-        void OnCollisionEnter(Collision col)
+        public void Check()
         {
-            if (col.gameObject.CompareTag(Consts.BulletTag))
-            {
-                print("OnCollisionEnter");
-                MastermindLogic.CheckCipher();
-            } else
-            {
-                print(col.gameObject.tag);
-            }
+            MastermindLogic.CheckCipher();
         }
     }
 }

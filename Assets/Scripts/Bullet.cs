@@ -9,7 +9,9 @@ public class Bullet : MonoBehaviour
     public int Strength = 5;
     public float SelfDestructionDist = 50f;
     public float Speed = 1f;
+    public GameObject ExplosionPrefab;
 
+    private AudioSource ShootAudio;
 
     private Vector3 _startPosition;
     private Vector3 _direction;
@@ -20,8 +22,12 @@ public class Bullet : MonoBehaviour
         _direction = direction;
         _direction.Normalize();
         SetStartPosition(position ?? transform.position);
-
-        this.gameObject.SetActive(true);
+        ShootAudio = GetComponent<AudioSource>();
+        if (ShootAudio)
+        {
+            ShootAudio.Play();
+        }
+        gameObject.SetActive(true);
     }
 
     public void SetStartPosition(Vector3 position)
@@ -78,6 +84,12 @@ public class Bullet : MonoBehaviour
 
         var mastermindSymbol = collider.GetComponent<Symbol>();
         if (mastermindSymbol) mastermindSymbol.BulletHit(transform);
+
+        var cipherChecker = collider.GetComponent<CipherCheck>();
+        if (cipherChecker) cipherChecker.Check();
+
+        GameObject explosionObject = Instantiate(ExplosionPrefab);
+        explosionObject.transform.Translate(transform.position);
     }
 
     private void SelfDestroy()

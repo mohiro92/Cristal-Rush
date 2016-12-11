@@ -61,6 +61,5 @@ public class SpawnPoints : MonoBehaviour {
         enemy.transform.position = Spawns[spawn].transform.position;
         GameObject explosion = Instantiate(ExplosionPrefab);
         explosion.transform.position = enemy.transform.position;
-        Destroy(explosion, 1.0f);
     }
 }

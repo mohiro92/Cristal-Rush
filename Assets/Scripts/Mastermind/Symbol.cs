@@ -97,7 +97,6 @@ namespace Assets.Scripts.Mastermind
                 }
                 GameObject explosionObject = Instantiate(ExplosionPrefab);
                 explosionObject.transform.Translate(transform.position);
-                Destroy(explosionObject, 2.0f);
             }
         }
     }

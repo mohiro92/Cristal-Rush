@@ -16,21 +16,27 @@ public class PlayerAcivator : MonoBehaviour
         _players = new Dictionary<int, PlayerWrapper>();
     }
 
+
+    private object lockObj = new object();  
     // Update is called once per frame
     void Update()
     {
-        var newIds = InputHelper.GetActiveInputIds().Select(k => k.Key).Where(i => !_players.ContainsKey(i) || !_players[i].gameObject.activeSelf);
-
-        foreach (var id in newIds)
+        lock (lockObj)
         {
-            if (!_players.ContainsKey(id))
-            {
-                var playerWrapper = Instantiate(PlayerPrefab);
-                playerWrapper.SetId(id);
-                _players.Add(id, playerWrapper);
-            }
+            var newIds = InputHelper.GetActiveInputIds().Select(k => k.Key).Where(i => !_players.ContainsKey(i) || !_players[i].gameObject.activeSelf).Distinct();
 
-            _players[id].Respawn(StartPosition, Time.deltaTime);
+            foreach (var id in newIds)
+            {
+                if (!_players.ContainsKey(id))
+                {
+                    var playerWrapper = Instantiate(PlayerPrefab);
+                    playerWrapper.SetId(id);
+                    _players.Add(id, playerWrapper);
+                }
+
+                _players[id].Respawn(StartPosition, Time.deltaTime);
+                break;
+            }
         }
     }
 }

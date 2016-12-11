@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     public Transform GunPivot;
     public float MaxHp  = 100f;
     public float _currentHp;
-    public bool IsDead { get { return _currentHp <= 0; } }
+    public bool IsDead { get { return _currentHp <= 0; } }  
 
     public Image HealthBar;
     public Text HealthText;
