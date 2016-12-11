@@ -13,10 +13,7 @@ public class PlayerWrapper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!Controller.gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
+        CheckDead();
 	}
 
     internal void SetId(int id)
@@ -29,5 +26,13 @@ public class PlayerWrapper : MonoBehaviour {
     {
         Controller.Respawn(startPosition, deltaTime);
         gameObject.SetActive(true);
+    }
+
+    private void CheckDead()
+    {
+        if (!Controller.gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

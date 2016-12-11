@@ -11,6 +11,11 @@
 
         public static readonly string BulletTag = "Bullet";
         public static readonly string PlayerTag = "Player";
+        public static readonly string EnemyTag = "Enemy";
         public static readonly string EntityAnimationDirection = "RunDirection";
+
+        public static readonly float HellLevel = -2f;
+        public static readonly float ArenaWidth = 9f;
+        public static readonly float ArenaDepth = 6f;
     }
 }

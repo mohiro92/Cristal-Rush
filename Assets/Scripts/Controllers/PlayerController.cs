@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         if (entity == null)
             throw new NullReferenceException("GameObject needs Entity component");
 
-        if (entity.IsDead)
+        if (entity.IsDead || entity.transform.position.y < Consts.HellLevel)
             Kill();
     }
 

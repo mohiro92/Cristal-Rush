@@ -47,12 +47,19 @@ public class EnemyController : MonoBehaviour
 
         if (Target != null)
         {
-            var distanceToTarget = (Target.transform.position - currentPos).magnitude;
-            var distanceToNearestPlayer = nearestPlayer != null ? (nearestPlayer.transform.position - currentPos).magnitude : float.MaxValue;
-
-            if (distanceToNearestPlayer - distanceToTarget < -NavigationTolerance)
+            if(!Target.activeSelf)
             {
                 Target = nearestPlayer;
+            }
+            else
+            {
+                var distanceToTarget = (Target.transform.position - currentPos).magnitude;
+                var distanceToNearestPlayer = nearestPlayer != null ? (nearestPlayer.transform.position - currentPos).magnitude : float.MaxValue;
+
+                if (distanceToNearestPlayer - distanceToTarget < -NavigationTolerance)
+                {
+                    Target = nearestPlayer;
+                }
             }
         }
         else
@@ -72,7 +79,7 @@ public class EnemyController : MonoBehaviour
         if (entity == null)
             throw new NullReferenceException("GameObject needs Entity component");
 
-        if (entity.IsDead)
+        if (entity.IsDead || entity.transform.position.y < Consts.HellLevel)
             Kill();
 
         return entity.IsDead;
