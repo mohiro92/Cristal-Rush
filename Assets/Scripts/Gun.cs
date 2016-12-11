@@ -27,7 +27,6 @@ public class Gun : MonoBehaviour
             var bullet = Instantiate(Bullet);
 
             var spawnPosition = transform.position + BulletSpawnOffset;
-            Debug.Log(string.Format("bullet init pos = {0}", spawnPosition));
             bullet.Init(direction, spawnPosition);
         }
     }
