@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerAcivator : MonoBehaviour
 {
-    public PlayerWrapper PlayerPrefab;
+    public PlayerController PlayerPrefab;
     public Vector3 StartPosition;
 
-    private Dictionary<int, PlayerWrapper> _players;
+    private Dictionary<int, PlayerController> _players;
 
     // Use this for initialization
     void Start()
     {
-        _players = new Dictionary<int, PlayerWrapper>();
+        _players = new Dictionary<int, PlayerController>();
     }
 
     // Update is called once per frame
@@ -25,9 +25,9 @@ public class PlayerAcivator : MonoBehaviour
         {
             if (!_players.ContainsKey(id))
             {
-                var playerWrapper = Instantiate(PlayerPrefab);
-                playerWrapper.SetId(id);
-                _players.Add(id, playerWrapper);
+                var player = Instantiate(PlayerPrefab);
+                player.SetId(id);
+                _players.Add(id, player);
             }
 
             _players[id].Respawn(StartPosition, Time.deltaTime);
