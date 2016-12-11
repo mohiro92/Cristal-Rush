@@ -4,8 +4,12 @@
     {
         public static readonly float Eps = 0.001f;
 
+        public static readonly int KeyBoardId = -1;
+
         public static readonly string HorizontalPrefixStr = "Horizontal";
         public static readonly string VerticalPrefixStr = "Vertical";
+        public static readonly string HorizontalRightPrefixStr = "HorizontalRight";
+        public static readonly string VerticalRightPrefixStr = "VerticalRight";
         public static readonly string JumpPrefixStr = "Jump";
         public static readonly string FirePrefixStr = "Fire1";
 

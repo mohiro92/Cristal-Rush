@@ -40,7 +40,7 @@ namespace Assets.Scripts.Utilities
 
         public static string GetAxisName(string prefix, int id)
         {
-            return string.Format("{0}{1}", prefix, id);
+            return id > 0 ? string.Format("{0}{1}", prefix, id) : prefix;
         }
 
         public static IList<string> AxesPrefixes
@@ -51,6 +51,8 @@ namespace Assets.Scripts.Utilities
                 {
                     Consts.HorizontalPrefixStr,
                     Consts.VerticalPrefixStr,
+                    Consts.HorizontalRightPrefixStr,
+                    Consts.VerticalRightPrefixStr
                 };
             }
         }
@@ -72,47 +74,54 @@ namespace Assets.Scripts.Utilities
         {
             var result = new Dictionary<int, List<string>>();
 
+            IsActive(Consts.KeyBoardId, result);
+
             for (int i = 1; i <= NumberOfJoisticks; i++)
             {
-                foreach (var prefix in AxesPrefixes)
-                {
-                    var axisName = GetAxisName(prefix, i);
-
-                    var axisVal = Input.GetAxis(axisName);
-
-                    if (Mathf.Abs(axisVal) > Consts.Eps)
-                    {
-                        if (result.ContainsKey(i))
-                        {
-                            result[i].Add(prefix);
-                        }
-                        else
-                        {
-                            result.Add(i, new List<string> {prefix});
-                        }
-                        break;
-                    }
-                }
-
-                foreach (var prefix in ButtonsPrefixes)
-                {
-                    var axisName = GetAxisName(prefix, i);
-                    if (Input.GetButton(axisName))
-                    {
-                        if (result.ContainsKey(i))
-                        {
-                            result[i].Add(prefix);
-                        }
-                        else
-                        {
-                            result.Add(i, new List<string> { prefix });
-                        }
-                        break;
-                    }
-                }
+                IsActive(i, result);
             }
 
             return result;
+        }
+
+        private static void IsActive(int id, Dictionary<int, List<string>> dictionary)
+        {
+            foreach (var prefix in AxesPrefixes)
+            {
+                var axisName = GetAxisName(prefix, id);
+
+                var axisVal = Input.GetAxis(axisName);
+
+                if (Mathf.Abs(axisVal) > Consts.Eps)
+                {
+                    if (dictionary.ContainsKey(id))
+                    {
+                        dictionary[id].Add(prefix);
+                    }
+                    else
+                    {
+                        dictionary.Add(id, new List<string> { prefix });
+                    }
+                    break;
+                }
+            }
+
+            foreach (var prefix in ButtonsPrefixes)
+            {
+                var axisName = GetAxisName(prefix, id);
+                if (Input.GetButton(axisName))
+                {
+                    if (dictionary.ContainsKey(id))
+                    {
+                        dictionary[id].Add(prefix);
+                    }
+                    else
+                    {
+                        dictionary.Add(id, new List<string> { prefix });
+                    }
+                    break;
+                }
+            }
         }
     }
 }

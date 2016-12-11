@@ -113,7 +113,6 @@ public class EnemyController : MonoBehaviour
         {
             var shootDir = Vector3.Normalize(Target.transform.position - transform.position);
 
-            Debug.Log("Enemy should shoot");
             entity.Shoot(shootDir);
         }
     }

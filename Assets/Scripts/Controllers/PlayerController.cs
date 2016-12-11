@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     public float Precision = 0.1f;
     public float Speed = 0.5f;
     public float JumpForce = 1f;
+    public GameObject GunPivot;
 
     private bool _isJumping = true;
     private float _lastSign = 1f;
 
-    private Vector3 _targetDirection = Vector3.forward;
+    private Vector3 _bodyForward = Vector3.forward;
+    private Vector3 _shootDir = Vector3.forward;
+
     private int _id = -1;
 
     // Update is called once per frame
@@ -23,14 +26,45 @@ public class PlayerController : MonoBehaviour
 
         CheckDead();
 
+        UpdateBody(deltaTime);
+        UpdateShoot(deltaTime);
+    }
+
+    private void UpdateBody(float deltaTime)
+    {
+        CheckDead();
+
         var dir = Vector3.zero;
 
-        dir += CheckHorizontal(deltaTime);
-        dir += CheckVertical(deltaTime);
+        dir += GetHorizontalDirection(Consts.HorizontalPrefixStr, deltaTime);
+        dir += GetVerticalDirection(Consts.VerticalPrefixStr, deltaTime);
+        dir.Normalize();
+        transform.position += dir * Speed * deltaTime;
 
+        var entity = GetComponentInChildren<Entity>();
+        if (entity == null)
+            throw new NullReferenceException("GameObject needs Entity component");
+
+
+        _bodyForward = CheckRotate(entity.transform, dir);
         CheckJump();
-        _targetDirection = CheckRotate(deltaTime, dir);
-        CheckShoot(_targetDirection);
+    }
+
+    private void UpdateShoot(float deltaTime)
+    {
+        var dir = Vector3.zero;
+
+        dir += GetHorizontalDirection(Consts.HorizontalRightPrefixStr, deltaTime);
+        dir += GetVerticalDirection(Consts.VerticalRightPrefixStr, deltaTime);
+
+        var entity = GetComponentInChildren<Entity>();
+        if (entity == null)
+            throw new NullReferenceException("GameObject needs Entity component");
+        
+        if(!dir.IsZero())
+            _shootDir = CheckRotate(GunPivot.transform, dir);
+
+        CheckShoot(_shootDir);
     }
 
     // on colision enter sets _isJumpiong to false
@@ -60,9 +94,9 @@ public class PlayerController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private Vector3 CheckRotate(float deltaTime, Vector3 dir)
+    private Vector3 CheckRotate(Transform trans, Vector3 dir)
     {
-        var result = _targetDirection;
+        var result = _bodyForward;
 
         if (Math.Abs(dir.x) > Consts.Eps)
         {
@@ -76,14 +110,14 @@ public class PlayerController : MonoBehaviour
 
         var angle = Vector3.Angle(Vector3.forward, result) * _lastSign;
 
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        trans.rotation = Quaternion.Euler(0f, angle, 0f);
 
         return result;
     }
 
-    private Vector3 CheckHorizontal(float deltaTime)
+    private Vector3 GetHorizontalDirection(string prefix, float deltaTime)
     {
-        var axisVal = Input.GetAxis(InputHelper.GetAxisName(Consts.HorizontalPrefixStr, _id));
+        var axisVal = Input.GetAxis(InputHelper.GetAxisName(prefix, _id));
         var sign = Mathf.Sign(axisVal);
 
         var result = Vector3.zero;
@@ -91,16 +125,15 @@ public class PlayerController : MonoBehaviour
         {
             var direction = Vector3.right * sign;
 
-            transform.position += direction * Speed * deltaTime;
             result += direction;
         }
 
         return result;
     }
 
-    private Vector3 CheckVertical(float deltaTime)
+    private Vector3 GetVerticalDirection(string prefix, float deltaTime)
     {
-        var axisVal = Input.GetAxis(InputHelper.GetAxisName(Consts.VerticalPrefixStr, _id));
+        var axisVal = Input.GetAxis(InputHelper.GetAxisName(prefix, _id));
         var sign = Mathf.Sign(axisVal);
 
         var result = Vector3.zero;
@@ -108,7 +141,6 @@ public class PlayerController : MonoBehaviour
         {
             var direction = Vector3.forward * sign;
 
-            transform.position += direction * Speed * deltaTime;
             result += direction;
         }
 
@@ -117,7 +149,16 @@ public class PlayerController : MonoBehaviour
 
     private void CheckJump()
     {
-        if (Input.GetButton(InputHelper.GetAxisName(Consts.JumpPrefixStr, _id)) && !_isJumping)
+        if(_isJumping)
+            return;
+
+        var axisName = InputHelper.GetAxisName(Consts.JumpPrefixStr, _id);
+
+        if (_id == Consts.KeyBoardId && Input.GetButton(axisName))
+        {
+            Jump();
+        }
+        else if (_id != Consts.KeyBoardId && Input.GetAxis(axisName) > Consts.Eps)
         {
             Jump();
         }
@@ -136,14 +177,27 @@ public class PlayerController : MonoBehaviour
 
     private void CheckShoot(Vector3 dir)
     {
-        if (Input.GetButton(InputHelper.GetAxisName(Consts.FirePrefixStr, _id)))
-        {
-            var entity = GetComponentInChildren<Entity>();
-            if (entity == null)
-                throw new NullReferenceException("GameObject needs Entity component");
+        var name = InputHelper.GetAxisName(Consts.FirePrefixStr, _id);
 
-            entity.Shoot(dir);
+        if (_id == Consts.KeyBoardId && Input.GetButton(name))
+        {
+            Shoot(dir);
+
         }
+        else if (_id != Consts.KeyBoardId && Input.GetAxis(name) < -Consts.Eps)
+        {
+            Shoot(dir);
+        }
+    }
+
+    private void Shoot(Vector3 dir)
+    {
+        var entity = GetComponentInChildren<Entity>();
+        if (entity == null)
+            throw new NullReferenceException("GameObject needs Entity component");
+
+        _shootDir = dir;
+        entity.Shoot(dir);
     }
 
     public void Respawn(Vector3 startPosition, float deltaTime)
