@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
 {
@@ -7,6 +8,10 @@ public class Entity : MonoBehaviour
     public float MaxHp  = 100f;
     public float _currentHp;
     public bool IsDead { get { return _currentHp <= 0; } }
+
+    public Image HealthBar;
+    public Text HealthText;
+
 
     public Animator animator;
 
@@ -20,6 +25,21 @@ public class Entity : MonoBehaviour
     void Update()
     {
         UpdateAnimation();
+        UpdateUI();
+
+    }
+
+    private void UpdateUI()
+    {
+        if (HealthBar != null)
+        {
+            HealthBar.fillAmount = (float)_currentHp / MaxHp;
+        }
+
+        if (HealthText != null)
+        {
+            HealthText.text = string.Format("{0:#.00}/{1:#.00}", _currentHp, MaxHp);
+        }
     }
 
     public void Shoot(Vector3 direction)
