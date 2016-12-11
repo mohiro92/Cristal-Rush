@@ -17,6 +17,7 @@ namespace Assets.Scripts.Mastermind
 
         // Cipher made with Symbols
         private Symbol[] cipherSymbols;
+        private float cipherSpacing = 4;
 
         // Counted occurences of cipher Symbols
         private int[] cipherOccurences;
@@ -30,11 +31,12 @@ namespace Assets.Scripts.Mastermind
         {
             cipherSymbols = new Symbol[Length];
             cipherOccurences = new int[SymbolPrefab.TypeCount()];
+            float cipherOffsetX = -(Length - 1) / 2 * cipherSpacing;
             for (int i = 0; i < Length; i++)
             {
                 cipherSymbols[i] = Instantiate(SymbolPrefab).GetComponent<Symbol>();
                 cipherSymbols[i].transform.SetParent(transform, false);
-                cipherSymbols[i].transform.localPosition = new Vector3(- Length / 2 + i, 0);
+                cipherSymbols[i].transform.position = new Vector3(cipherOffsetX + i * cipherSpacing, 0);
                 cipherSymbols[i].RandomizeValue();
                 cipherOccurences[cipherSymbols[i].value]++;
             }

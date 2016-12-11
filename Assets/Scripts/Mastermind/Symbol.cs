@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Assets.Scripts;
+
 using System.Collections;
 using System.Collections.Generic;
 
@@ -84,6 +86,11 @@ namespace Assets.Scripts.Mastermind
 
         public void BulletHit(Transform bulletTransform)
         {
+            if(GameObject.FindGameObjectsWithTag(Consts.EnemyTag).Length > 0)
+            {
+                return;
+            }
+
             if (bulletTransform.gameObject.tag.Equals(Consts.BulletTag))
             {
                 print(bulletTransform.position.z + " " + transform.position.z);
