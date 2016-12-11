@@ -18,13 +18,13 @@ namespace Assets.Scripts.Mastermind
         // Use this for initialization
         void Start()
         {
-            foreach(GameObject symbol in availableSymbols)
+            foreach (GameObject symbol in availableSymbols)
             {
                 GameObject child = Instantiate(symbol);
                 child.transform.SetParent(transform, false);
-                child.SetActive(false);
+                child.gameObject.SetActive(false);
             }
-            RandomizeValue();
+            Activate(value);
         }
 
         // Update is called once per frame
@@ -36,7 +36,6 @@ namespace Assets.Scripts.Mastermind
         public void RandomizeValue()
         {
             value = randomGenerator.Next(0, availableSymbols.Count);
-            transform.GetChild(value).gameObject.SetActive(true);
         }
 
         public static bool operator ==(Symbol emp1, Symbol emp2)

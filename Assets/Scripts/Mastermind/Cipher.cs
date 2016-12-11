@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Assets.Scripts.Mastermind;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Mastermind
                 cipherSymbols[i] = Instantiate(SymbolPrefab).GetComponent<Symbol>();
                 cipherSymbols[i].transform.SetParent(transform, false);
                 cipherSymbols[i].transform.localPosition = new Vector3(- Length / 2 + i, 0);
+                cipherSymbols[i].RandomizeValue();
                 cipherOccurences[cipherSymbols[i].value]++;
             }
         }
@@ -73,6 +75,11 @@ namespace Assets.Scripts.Mastermind
         public Symbol GetSymbol(int index)
         {
             return cipherSymbols[index];
+        }
+
+        public override string ToString()
+        {
+            return string.Join(" - ", cipherSymbols.Select(s => s.value.ToString()).ToArray());
         }
     }
 }
