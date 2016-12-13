@@ -6,26 +6,25 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts.Mastermind
 {
-    public class Symbol : MonoBehaviour
-    {
+    public class Crystal : MonoBehaviour
+    { 
         // Randomization component
         private static System.Random randomGenerator = new System.Random();
-        // Available cipher symbols GameObjects
-        public List<GameObject> availableSymbols;
+        // Available cipher colors
+        [ColorUsageAttribute(true, true, 0f, 8f, 0.125f, 3f)]
+        public List<Color> availableColors;
         // Actual value of symbol
         public int value;
         // Crystal explosion prefab
         public GameObject ExplosionPrefab;
 
+        public GameObject CrystalModel;
+        public Light Light;
+
         // Use this for initialization
         void Start()
         {
-            foreach (GameObject symbol in availableSymbols)
-            {
-                GameObject child = Instantiate(symbol);
-                child.transform.SetParent(transform, false);
-                child.gameObject.SetActive(false);
-            }
+            CrystalModel.GetComponent<Renderer>().material.EnableKeyword("_EmissionColor");
             Activate(value);
         }
 
@@ -37,27 +36,27 @@ namespace Assets.Scripts.Mastermind
 
         public void RandomizeValue()
         {
-            value = randomGenerator.Next(0, availableSymbols.Count);
+            value = randomGenerator.Next(0, availableColors.Count);
         }
 
-        public static bool operator ==(Symbol emp1, Symbol emp2)
+        public static bool operator ==(Crystal emp1, Crystal emp2)
         {
             return emp1.value == emp2.value;
         }
 
-        public static bool operator !=(Symbol emp1, Symbol emp2)
+        public static bool operator !=(Crystal emp1, Crystal emp2)
         {
             return emp1.value != emp2.value;
         }
 
         public int TypeCount()
         {
-            return availableSymbols.Count;
+            return availableColors.Count;
         }
 
         private void Next()
         {
-            int newValue = (value + 1) % availableSymbols.Count;
+            int newValue = (value + 1) % availableColors.Count;
             Activate(newValue);
         }
 
@@ -66,22 +65,16 @@ namespace Assets.Scripts.Mastermind
             int newValue = value-1;
             if(newValue < 0)
             {
-                newValue = availableSymbols.Count - 1;
+                newValue = availableColors.Count - 1;
             }
             Activate(newValue);
         }
         
         private void Activate(int index)
         {
-            if (value < transform.childCount && value >= 0)
-            {
-                transform.GetChild(value).gameObject.SetActive(false);
-            }
             value = index;
-            if (value < transform.childCount && value >= 0)
-            {
-                transform.GetChild(value).gameObject.SetActive(true);
-            }
+            CrystalModel.GetComponent<Renderer>().material.SetColor("_EmissionColor", availableColors[value]);
+            Light.color = availableColors[value];
         }
 
         public void BulletHit(Transform bulletTransform)

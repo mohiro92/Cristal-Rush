@@ -82,7 +82,7 @@ public class Bullet : MonoBehaviour
 
         if (entity != null) entity.Hit(MinVal + BulletRandom.NextFloat(Strength));
 
-        var mastermindSymbol = collider.GetComponent<Symbol>();
+        var mastermindSymbol = collider.GetComponent<Crystal>();
         if (mastermindSymbol) mastermindSymbol.BulletHit(transform);
 
         var cipherChecker = collider.GetComponent<CipherCheck>();

@@ -5,7 +5,8 @@ using UnityEngine;
 public class CrystalAnimator : MonoBehaviour
 {
     public float AnimationHeight = 0.5f;
-    public float Speed = 1.5f;
+    public float FloatingSpeed = 1.5f;
+    public Vector3 RotationVector = new Vector3(0, 0, 45f);
 
     private Vector3 animationVector;
     private Vector3 originalPosition;
@@ -20,6 +21,7 @@ public class CrystalAnimator : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        transform.localPosition = originalPosition + animationVector * Mathf.Sin(animationSeed + Speed * Time.time);
+        transform.localPosition = originalPosition + animationVector * Mathf.Sin(animationSeed + FloatingSpeed * Time.time);
+        transform.eulerAngles += RotationVector * Time.deltaTime;
 	}
 }
