@@ -30,7 +30,7 @@ namespace Assets.Scripts.Mastermind
         private void RandomizeCipher()
         {
             cipherSymbols = new Crystal[Length];
-            cipherOccurences = new int[CrystalPrefab.TypeCount()];
+            cipherOccurences = new int[CrystalPrefab.TypeCount()];  
             float cipherOffsetX = -(Length - 1) / 2 * cipherSpacing;
             for (int i = 0; i < Length; i++)
             {
