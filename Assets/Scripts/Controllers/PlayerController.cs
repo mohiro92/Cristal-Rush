@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Precision = 0.1f;
-    public float Speed = 0.5f;
     public float JumpForce = 1f;
     public GameObject GunPivot;
 
@@ -39,12 +38,13 @@ public class PlayerController : MonoBehaviour
         dir += GetHorizontalDirection(Consts.HorizontalPrefixStr, deltaTime);
         dir += GetVerticalDirection(Consts.VerticalPrefixStr, deltaTime);
         dir.Normalize();
-        transform.position += dir * Speed * deltaTime;
-
+        
         var entity = GetComponentInChildren<Entity>();
         if (entity == null)
             throw new NullReferenceException("GameObject needs Entity component");
 
+
+        entity.Move(dir);
 
         _bodyForward = CheckRotate(entity.transform, dir);
         CheckJump();
@@ -179,12 +179,7 @@ public class PlayerController : MonoBehaviour
     {
         var name = InputHelper.GetAxisName(Consts.FirePrefixStr, _id);
 
-        if (_id == Consts.KeyBoardId && Input.GetButton(name))
-        {
-            Shoot(dir);
-
-        }
-        else if (_id != Consts.KeyBoardId && Input.GetAxis(name) < -Consts.Eps)
+        if (_id == Consts.KeyBoardId && (Input.GetButton(name) || Input.GetAxis(name) < -Consts.Eps))
         {
             Shoot(dir);
         }

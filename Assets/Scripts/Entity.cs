@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Assets.Scripts;
+using Assets.Scripts.Utilities;
 using UnityEngine.UI;
 
 public class Entity : MonoBehaviour
@@ -8,24 +8,24 @@ public class Entity : MonoBehaviour
     public Transform GunPivot;
     public float MaxHp  = 100f;
     public float _currentHp;
+    public float Speed = 0.5f;
     public bool IsDead { get { return _currentHp <= 0; } }  
 
     public Image HealthBar;
     public Text HealthText;
 
-
-    public Animator animator;
+    private Animator Animator;
 
     // Use this for initialization
     void Start()
     {
         _currentHp = MaxHp;
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateAnimation();
         UpdateUI();
 
     }
@@ -50,8 +50,18 @@ public class Entity : MonoBehaviour
             Debug.Log("Entity don't have weapon");
             return;
         }
+        
+        if(Gun.CanShoot())
+        {
+            Animator.SetTrigger("Throw");
+            Gun.Shoot();
+        }
+    }
 
-        Gun.Shoot(direction);
+    public void Move(Vector3 direction)
+    {
+        Animator.SetBool("IsRunning", !direction.IsZero());
+        transform.position += direction * Speed * Time.deltaTime;
     }
 
     public void Hit(float val)
@@ -59,29 +69,6 @@ public class Entity : MonoBehaviour
         Debug.Log(string.Format("Entity.Hit({0})", val));
 
         _currentHp -= val;
-    }
-
-    private void UpdateAnimation()
-    {
-        if (animator)
-        {
-            if (GunPivot.eulerAngles.y <= 45 || GunPivot.eulerAngles.y > 315)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 0);
-            }
-            else if (GunPivot.eulerAngles.y > 45 && GunPivot.eulerAngles.y <= 135)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 1);
-            }
-            else if (GunPivot.eulerAngles.y > 135 && GunPivot.eulerAngles.y <= 225)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 2);
-            }
-            else if (GunPivot.eulerAngles.y > 225 && GunPivot.eulerAngles.y <= 315)
-            {
-                animator.SetInteger(Consts.EntityAnimationDirection, 3);
-            }
-        }
     }
 
     public void Respawn()

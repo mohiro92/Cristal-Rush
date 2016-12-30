@@ -11,50 +11,27 @@ public class Bullet : MonoBehaviour
     public float Speed = 1f;
     public GameObject ExplosionPrefab;
 
-    private AudioSource ShootAudio;
-
-    private Vector3 _startPosition;
-    private Vector3 _direction;
+    private AudioSource shootAudio;
     private bool _isDestroyed = false;
+    private Rigidbody rigidbody;
+    private Vector3 rotation;
 
-    public void Init(Vector3 direction, Vector3? position = null)
+    void Start()
     {
-        _direction = direction;
-        _direction.Normalize();
-        SetStartPosition(position ?? transform.position);
-        ShootAudio = GetComponent<AudioSource>();
-        if (ShootAudio)
+        shootAudio = GetComponent<AudioSource>();
+        if (shootAudio)
         {
-            ShootAudio.Play();
+            //shootAudio.Play();
         }
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.AddForce(transform.forward * Speed);
         gameObject.SetActive(true);
+        rotation = new Vector3(Random.Range(-360, 360), Random.Range(-360, 360), Random.Range(-360, 360));
     }
 
-    public void SetStartPosition(Vector3 position)
+    private void Update()
     {
-        _startPosition = position;
-        transform.position = _startPosition;
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if ((transform.position - _startPosition).magnitude > SelfDestructionDist)
-        {
-            SelfDestroy();
-            return;
-        }
-
-        var move = _direction * Speed * Time.deltaTime;
-
-        if (Physics.Raycast(transform.position, _direction, move.magnitude))
-        {
-            var firstHit = Physics.RaycastAll(transform.position, _direction, move.magnitude).First();
-            Hit(firstHit.collider);
-            return;
-        }
-
-        transform.position += move;
+        transform.eulerAngles += 5 * Time.deltaTime * rotation;
     }
 
     void OnCollisionEnter(Collision collision)

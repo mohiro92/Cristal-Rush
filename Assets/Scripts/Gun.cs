@@ -16,18 +16,25 @@ public class Gun : MonoBehaviour
             throw new NullReferenceException("Bullet should be not null");
     }
 
-    public void Shoot(Vector3 direction)
+    public bool CanShoot()
     {
         int lastTime = (DateTime.Now - (_lastShootDateTime ?? DateTime.Now)).Milliseconds;
 
-        if (_lastShootDateTime == null || lastTime > ShootCooldown)
+        return _lastShootDateTime == null || lastTime > ShootCooldown;
+    }
+
+    public void Shoot()
+    {
+        if (CanShoot())
         {
             _lastShootDateTime = DateTime.Now;
-
-            var spawnPosition = transform.position + BulletSpawnOffset;
-            var bullet = Instantiate(Bullet, spawnPosition, Bullet.transform.rotation);
-
-            bullet.Init(direction, spawnPosition);
+            Invoke("Throw", 0.4f);
         }
+    }
+
+    private void Throw()
+    {
+        var spawnPosition = transform.position + BulletSpawnOffset;
+        var bullet = Instantiate(Bullet, spawnPosition, transform.rotation);
     }
 }
