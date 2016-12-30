@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Xml.Serialization;
 using Assets.Scripts;
 using Assets.Scripts.Randoms;
 using UnityEngine;
@@ -22,7 +21,7 @@ public class EnemyController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        _nav = GetComponent<NavMeshAgent>();
         
         //to prevent shoot and start
         SetNewMinCooldownValue();
