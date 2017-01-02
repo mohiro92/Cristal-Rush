@@ -34,7 +34,10 @@ public class Gun : MonoBehaviour
 
     private void Throw()
     {
-        var spawnPosition = transform.position + BulletSpawnOffset;
-        var bullet = Instantiate(Bullet, spawnPosition, transform.rotation);
+        if(Bullet != null)
+        {   
+            var spawnPosition = transform.position + BulletSpawnOffset;
+            var bullet = Instantiate(Bullet, spawnPosition, transform.rotation);
+        }
     }
 }
