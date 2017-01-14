@@ -46,6 +46,17 @@ ModelImporter:
     100076: Body_002
     100078: Bone_003
     100080: Bone_004
+    100082: Boots_001
+    100084: LeftArm
+    100086: LeftArm_001
+    100088: Pants_001
+    100090: Pants_002
+    100092: Pants_003
+    100094: Pants_004
+    100096: Shirt_001
+    100098: Shirt_002
+    100100: Body_003
+    100102: Armature_001
     400000: Armature
     400002: Beard
     400004: Belt
@@ -87,6 +98,17 @@ ModelImporter:
     400076: Body_002
     400078: Bone_003
     400080: Bone_004
+    400082: Boots_001
+    400084: LeftArm
+    400086: LeftArm_001
+    400088: Pants_001
+    400090: Pants_002
+    400092: Pants_003
+    400094: Pants_004
+    400096: Shirt_001
+    400098: Shirt_002
+    400100: Body_003
+    400102: Armature_001
     2300000: Cube
     2300002: Cube_001
     2300004: HeadOld
@@ -113,6 +135,16 @@ ModelImporter:
     4300026: Cube_002
     4300028: Body_001
     4300030: Body_002
+    4300032: Pants_004
+    4300034: Pants_003
+    4300036: Pants_002
+    4300038: Pants_001
+    4300040: Boots_001
+    4300042: LeftArm_001
+    4300044: Shirt_002
+    4300046: Shirt_001
+    4300048: LeftArm
+    4300050: Body_003
     7400000: Running
     7400002: Idle
     7400004: Running
@@ -135,6 +167,17 @@ ModelImporter:
     13700022: Cube_001
     13700024: Cube_002
     13700026: Body_001
+    13700028: Body_002
+    13700030: Boots_001
+    13700032: LeftArm
+    13700034: LeftArm_001
+    13700036: Pants_001
+    13700038: Pants_002
+    13700040: Pants_003
+    13700042: Pants_004
+    13700044: Shirt_001
+    13700046: Shirt_002
+    13700048: Body_003
   materials:
     importMaterials: 1
     materialName: 0

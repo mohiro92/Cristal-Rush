@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4336623192461540}
   - component: {fileID: 33714845702825560}
   - component: {fileID: 23038937046110306}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4293702616997164}
   - component: {fileID: 33140937684123428}
   - component: {fileID: 23460631914103632}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4645080993239568}
   - component: {fileID: 33670181644927598}
   - component: {fileID: 23262891994274942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder_004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 65576495979176638}
   - component: {fileID: 65373460261719570}
   - component: {fileID: 54619822439013006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4673056591172972}
   - component: {fileID: 33905532389318504}
   - component: {fileID: 23969692209327680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4696261654038680}
   - component: {fileID: 33067441535520080}
   - component: {fileID: 23673207388321244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4540568382526436}
   - component: {fileID: 33086181897285438}
   - component: {fileID: 23120617442108682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 4882476774280960}
   - component: {fileID: 33766974714358344}
   - component: {fileID: 23021249617214514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,9 +247,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1305552672836046}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -1.5, y: -1.3700006, z: -0.6992481}
-  m_LocalScale: {x: 1.0000026, y: 1.0000018, z: 1.0000018}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.920752, z: -0.20200276}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4293702616997164}
   - {fileID: 4673056591172972}
