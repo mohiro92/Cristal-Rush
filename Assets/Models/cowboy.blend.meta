@@ -1,0 +1,680 @@
+fileFormatVersion: 2
+guid: 26b786bc4bccd58449ec85e09537bab3
+timeCreated: 1483051742
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Beard
+    100004: Belt
+    100006: Body
+    100008: Bone
+    100010: Bone_001
+    100012: Bone_001_L
+    100014: Bone_001_L_001
+    100016: Bone_001_L_002
+    100018: Bone_001_L_003
+    100020: Bone_001_L_004
+    100022: Bone_001_R
+    100024: Bone_001_R_001
+    100026: Bone_001_R_002
+    100028: Bone_001_R_003
+    100030: Bone_001_R_004
+    100032: Bone_002
+    100034: Bone_L
+    100036: Bone_L_001
+    100038: Bone_L_002
+    100040: Bone_L_003
+    100042: Bone_R
+    100044: Bone_R_001
+    100046: Bone_R_002
+    100048: Bone_R_003
+    100050: Boots
+    100052: Cube
+    100054: Cube_001
+    100056: Eyepatch
+    100058: Flask1
+    100060: Flask2
+    100062: Head
+    100064: HeadOld
+    100066: Pants
+    100068: //RootNode
+    100070: Shirt
+    100072: Cube_002
+    100074: Body_001
+    100076: Body_002
+    100078: Bone_003
+    100080: Bone_004
+    100082: Boots_001
+    100084: LeftArm
+    100086: LeftArm_001
+    100088: Pants_001
+    100090: Pants_002
+    100092: Pants_003
+    100094: Pants_004
+    100096: Shirt_001
+    100098: Shirt_002
+    100100: Body_003
+    100102: Armature_001
+    400000: Armature
+    400002: Beard
+    400004: Belt
+    400006: Body
+    400008: Bone
+    400010: Bone_001
+    400012: Bone_001_L
+    400014: Bone_001_L_001
+    400016: Bone_001_L_002
+    400018: Bone_001_L_003
+    400020: Bone_001_L_004
+    400022: Bone_001_R
+    400024: Bone_001_R_001
+    400026: Bone_001_R_002
+    400028: Bone_001_R_003
+    400030: Bone_001_R_004
+    400032: Bone_002
+    400034: Bone_L
+    400036: Bone_L_001
+    400038: Bone_L_002
+    400040: Bone_L_003
+    400042: Bone_R
+    400044: Bone_R_001
+    400046: Bone_R_002
+    400048: Bone_R_003
+    400050: Boots
+    400052: Cube
+    400054: Cube_001
+    400056: Eyepatch
+    400058: Flask1
+    400060: Flask2
+    400062: Head
+    400064: HeadOld
+    400066: Pants
+    400068: //RootNode
+    400070: Shirt
+    400072: Cube_002
+    400074: Body_001
+    400076: Body_002
+    400078: Bone_003
+    400080: Bone_004
+    400082: Boots_001
+    400084: LeftArm
+    400086: LeftArm_001
+    400088: Pants_001
+    400090: Pants_002
+    400092: Pants_003
+    400094: Pants_004
+    400096: Shirt_001
+    400098: Shirt_002
+    400100: Body_003
+    400102: Armature_001
+    2300000: Cube
+    2300002: Cube_001
+    2300004: HeadOld
+    2300006: Cube_002
+    2300008: Body_002
+    3300000: Cube
+    3300002: Cube_001
+    3300004: HeadOld
+    3300006: Cube_002
+    3300008: Body_002
+    4300000: Cube_001
+    4300002: Cube
+    4300004: Boots
+    4300006: Pants
+    4300008: Body
+    4300010: Head
+    4300012: Eyepatch
+    4300014: Shirt
+    4300016: Beard
+    4300018: Belt
+    4300020: Flask2
+    4300022: Flask1
+    4300024: HeadOld
+    4300026: Cube_002
+    4300028: Body_001
+    4300030: Body_002
+    4300032: Pants_004
+    4300034: Pants_003
+    4300036: Pants_002
+    4300038: Pants_001
+    4300040: Boots_001
+    4300042: LeftArm_001
+    4300044: Shirt_002
+    4300046: Shirt_001
+    4300048: LeftArm
+    4300050: Body_003
+    7400000: Running
+    7400002: Idle
+    7400004: Running
+    7400006: Throwing
+    7400008: Running
+    7400010: TakeOutSabre
+    7400012: SabreCut1
+    9500000: //RootNode
+    13700000: Beard
+    13700002: Belt
+    13700004: Body
+    13700006: Boots
+    13700008: Eyepatch
+    13700010: Flask1
+    13700012: Flask2
+    13700014: Head
+    13700016: Pants
+    13700018: Shirt
+    13700020: Cube
+    13700022: Cube_001
+    13700024: Cube_002
+    13700026: Body_001
+    13700028: Body_002
+    13700030: Boots_001
+    13700032: LeftArm
+    13700034: LeftArm_001
+    13700036: Pants_001
+    13700038: Pants_002
+    13700040: Pants_003
+    13700042: Pants_004
+    13700044: Shirt_001
+    13700046: Shirt_002
+    13700048: Body_003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Running
+      takeName: Running
+      firstFrame: -1
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003/Bone_001_L_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003/Bone_001_R_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone_003
+        weight: 1
+      - path: Armature/Bone_004
+        weight: 1
+      - path: Armature/Bone_L
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002/Bone_L_003
+        weight: 1
+      - path: Armature/Bone_R
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002/Bone_R_003
+        weight: 1
+      - path: Beard
+        weight: 1
+      - path: Belt
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body_001
+        weight: 1
+      - path: Boots
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Eyepatch
+        weight: 1
+      - path: Flask1
+        weight: 1
+      - path: Flask2
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: HeadOld
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003/Bone_001_L_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003/Bone_001_R_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone_003
+        weight: 1
+      - path: Armature/Bone_004
+        weight: 1
+      - path: Armature/Bone_L
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002/Bone_L_003
+        weight: 1
+      - path: Armature/Bone_R
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002/Bone_R_003
+        weight: 1
+      - path: Beard
+        weight: 1
+      - path: Belt
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body_001
+        weight: 1
+      - path: Boots
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Eyepatch
+        weight: 1
+      - path: Flask1
+        weight: 1
+      - path: Flask2
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: HeadOld
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SabreCut1
+      takeName: SabreCut1
+      firstFrame: -1
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003/Bone_001_L_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003/Bone_001_R_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone_003
+        weight: 1
+      - path: Armature/Bone_004
+        weight: 1
+      - path: Armature/Bone_L
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002/Bone_L_003
+        weight: 1
+      - path: Armature/Bone_R
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002/Bone_R_003
+        weight: 1
+      - path: Beard
+        weight: 1
+      - path: Belt
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body_001
+        weight: 1
+      - path: Boots
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Eyepatch
+        weight: 1
+      - path: Flask1
+        weight: 1
+      - path: Flask2
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: HeadOld
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: TakeOutSabre
+      takeName: TakeOutSabre
+      firstFrame: -1
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_L/Bone_001_L_001/Bone_001_L_002/Bone_001_L_003/Bone_001_L_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_001_R/Bone_001_R_001/Bone_001_R_002/Bone_001_R_003/Bone_001_R_004
+        weight: 1
+      - path: Armature/Bone/Bone_001/Bone_002
+        weight: 1
+      - path: Armature/Bone_003
+        weight: 1
+      - path: Armature/Bone_004
+        weight: 1
+      - path: Armature/Bone_L
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002
+        weight: 1
+      - path: Armature/Bone_L/Bone_L_001/Bone_L_002/Bone_L_003
+        weight: 1
+      - path: Armature/Bone_R
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002
+        weight: 1
+      - path: Armature/Bone_R/Bone_R_001/Bone_R_002/Bone_R_003
+        weight: 1
+      - path: Beard
+        weight: 1
+      - path: Belt
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body_001
+        weight: 1
+      - path: Boots
+        weight: 1
+      - path: Cube
+        weight: 1
+      - path: Cube_001
+        weight: 1
+      - path: Cube_002
+        weight: 1
+      - path: Eyepatch
+        weight: 1
+      - path: Flask1
+        weight: 1
+      - path: Flask2
+        weight: 1
+      - path: Head
+        weight: 1
+      - path: HeadOld
+        weight: 1
+      - path: Pants
+        weight: 1
+      - path: Shirt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

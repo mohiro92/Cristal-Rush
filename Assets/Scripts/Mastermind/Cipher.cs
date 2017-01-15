@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Assets.Scripts.Mastermind;
 using UnityEngine;
@@ -10,12 +11,13 @@ namespace Assets.Scripts.Mastermind
     public class Cipher : MonoBehaviour
     {
         // Cipher Symbol prefab
-        public Symbol SymbolPrefab;
+        public Crystal CrystalPrefab;
         // Length of the cipher
         public int Length;
 
         // Cipher made with Symbols
-        private Symbol[] cipherSymbols;
+        private Crystal[] cipherSymbols;
+        private float cipherSpacing = 4;
 
         // Counted occurences of cipher Symbols
         private int[] cipherOccurences;
@@ -27,13 +29,15 @@ namespace Assets.Scripts.Mastermind
 
         private void RandomizeCipher()
         {
-            cipherSymbols = new Symbol[Length];
-            cipherOccurences = new int[SymbolPrefab.TypeCount()];
+            cipherSymbols = new Crystal[Length];
+            cipherOccurences = new int[CrystalPrefab.TypeCount()];  
+            float cipherOffsetX = -(Length - 1) / 2 * cipherSpacing;
             for (int i = 0; i < Length; i++)
             {
-                cipherSymbols[i] = Instantiate(SymbolPrefab).GetComponent<Symbol>();
+                cipherSymbols[i] = Instantiate(CrystalPrefab).GetComponent<Crystal>();
                 cipherSymbols[i].transform.SetParent(transform, false);
-                cipherSymbols[i].transform.localPosition = new Vector3(- Length / 2 + i, 0);
+                cipherSymbols[i].transform.position = new Vector3(cipherOffsetX + i * cipherSpacing, 0);
+                cipherSymbols[i].RandomizeValue();
                 cipherOccurences[cipherSymbols[i].value]++;
             }
         }
@@ -44,7 +48,7 @@ namespace Assets.Scripts.Mastermind
             int[] cipherHits = cipherOccurences.ToArray();
             for (int i = 0; i < cipherSymbols.Length; i++)
             {
-                Symbol checkedSymbol = checkedCipher.GetSymbol(i);
+                Crystal checkedSymbol = checkedCipher.GetSymbol(i);
 
                 Enemies enemy = Enemies.EasyEnemy;
 
@@ -70,9 +74,14 @@ namespace Assets.Scripts.Mastermind
             return enemies;
         }
 
-        public Symbol GetSymbol(int index)
+        public Crystal GetSymbol(int index)
         {
             return cipherSymbols[index];
+        }
+
+        public override string ToString()
+        {
+            return string.Join(" - ", cipherSymbols.Select(s => s.value.ToString()).ToArray());
         }
     }
 }

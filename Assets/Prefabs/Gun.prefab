@@ -154,6 +154,7 @@ MonoBehaviour:
   Strength: 5
   SelfDestructionDist: 50
   Speed: 4.05
+  ExplosionPrefab: {fileID: 0}
 --- !u!114 &114914143475060406
 MonoBehaviour:
   m_ObjectHideFlags: 1

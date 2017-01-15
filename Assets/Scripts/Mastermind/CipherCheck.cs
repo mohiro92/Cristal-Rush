@@ -6,17 +6,18 @@ namespace Assets.Scripts.Mastermind
     public class CipherCheck : MonoBehaviour
     {
         public MastermindLogic MastermindLogic;
+
+        private Vector3 rotationVector = new Vector3(0, 180, 0);
         
-        void OnCollisionEnter(Collision col)
+        public void Check()
         {
-            if (col.gameObject.CompareTag(Consts.BulletTag))
+            if (GameObject.FindGameObjectsWithTag(Consts.EnemyTag).Length > 0)
             {
-                print("OnCollisionEnter");
-                MastermindLogic.CheckCipher();
-            } else
-            {
-                print(col.gameObject.tag);
+                return;
             }
+
+            MastermindLogic.CheckCipher();
+            transform.Rotate(rotationVector);
         }
     }
 }
