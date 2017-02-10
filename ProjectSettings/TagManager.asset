@@ -24,8 +24,8 @@ TagManager:
   - Player
   - Entity
   - Item
-  - 
-  - 
+  - Detachable
+  - Hitable
   - 
   - 
   - 

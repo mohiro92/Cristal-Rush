@@ -4,13 +4,12 @@ using UnityEngine;
 public class Detachable : MonoBehaviour
 {
 
-    public KeyCode keyCode;
+    public KeyCode keyCode = KeyCode.Q;
     private Rigidbody _rigidbody;
 
     // Use this for initialization
     void Awake()
     {
-
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -19,10 +18,26 @@ public class Detachable : MonoBehaviour
     {
         if (Input.GetKey(keyCode))
         {
-            transform.parent = null;
-            _rigidbody.isKinematic = false;
-            gameObject.layer = (int) Layers.Item;
+            Detach();
         }
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Detach();
+
+        Debug.Log("Collision :)");
+    }
+
+    private void Detach()
+    {
+        transform.parent = null;
+
+        if(_rigidbody != null)
+            _rigidbody.isKinematic = false;
+
+        
+        //gameObject.layer = (int) Layers.Item;
     }
 }

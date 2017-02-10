@@ -99,8 +99,6 @@ public class PlayerController : MonoBehaviour
         {
             State = EntityState.MovingBackward;
         }
-
-        Debug.Log(string.Format("move dir: {0}, rotation dir: {1}, angle: {2}", moveDirection, bodyForward, angle));
     }
 
     private void UpdateRotation(Vector3 forward, Vector3 right)
