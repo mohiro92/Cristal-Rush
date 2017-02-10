@@ -22,8 +22,8 @@ TagManager:
   - Ground
   - Weapon
   - Player
-  - 
-  - 
+  - Entity
+  - Item
   - 
   - 
   - 

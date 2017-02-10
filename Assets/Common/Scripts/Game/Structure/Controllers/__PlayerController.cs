@@ -3,7 +3,7 @@ using Assets.Scripts;
 using Assets.Scripts.Utilities;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class __PlayerController : MonoBehaviour
 {
     public Player Player;
 

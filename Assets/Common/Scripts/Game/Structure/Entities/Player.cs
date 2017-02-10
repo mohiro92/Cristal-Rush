@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 
     internal void SetId(int id)
     {
-        GetComponent<PlayerController>().SetId(id);
+        GetComponent<__PlayerController>().SetId(id);
         PlayerName = string.Format("Player {0}", id);
     }
 
