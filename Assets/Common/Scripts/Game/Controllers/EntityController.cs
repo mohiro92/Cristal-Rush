@@ -30,7 +30,8 @@ public class EntityController : MonoBehaviour
         if(inputHandler)
         {
             inputHandler.UnregisterAxisCallback(UpdateDirection);
-            inputHandler.UnregisterKeyCallback(InputHandler.Consts.Jump, Jump);
+            inputHandler.UnregisterKeyCallback(KeyCode.Space, Jump);
+            inputHandler.UnregisterKeyCallback(KeyCode.LeftControl, Punch);
         }
     }
 
@@ -41,7 +42,8 @@ public class EntityController : MonoBehaviour
             this.inputHandler = inputHandler;
 
             inputHandler.RegisterAxisCallback(UpdateDirection);
-            inputHandler.RegisterKeyCallback(InputHandler.Consts.Jump, Jump);
+            inputHandler.RegisterKeyCallback(KeyCode.Space, Jump);
+            inputHandler.RegisterKeyCallback(KeyCode.LeftControl, Punch);
         }
     }
         
@@ -56,6 +58,11 @@ public class EntityController : MonoBehaviour
     private void Jump()
     {
         entity.Jump();
+    }
+
+    private void Punch()
+    {
+        entity.Punch();
     }
 
     private Vector3 GetForward()

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5572336febce24147852f1ccbd8a1200
-timeCreated: 1483051742
+timeCreated: 1486421473
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -57,6 +57,24 @@ ModelImporter:
     100098: Shirt_002
     100100: Body_003
     100102: Armature_001
+    100104: Chest
+    100106: Gun
+    100108: Hat
+    100110: LeftBiceps
+    100112: LeftBoot
+    100114: LeftHand
+    100116: LeftThigh
+    100118: LeftTibia
+    100120: Legs
+    100122: RightArm
+    100124: RightBiceps
+    100126: RightHand
+    100128: RightThigh
+    100130: RightTibia
+    100132: Sabre
+    100134: Tummy
+    100136: Belly
+    100138: Torso
     400000: Armature
     400002: Beard
     400004: Belt
@@ -109,16 +127,108 @@ ModelImporter:
     400098: Shirt_002
     400100: Body_003
     400102: Armature_001
+    400104: Chest
+    400106: Gun
+    400108: Hat
+    400110: LeftBiceps
+    400112: LeftBoot
+    400114: LeftHand
+    400116: LeftThigh
+    400118: LeftTibia
+    400120: Legs
+    400122: RightArm
+    400124: RightBiceps
+    400126: RightHand
+    400128: RightThigh
+    400130: RightTibia
+    400132: Sabre
+    400134: Tummy
+    400136: Belly
+    400138: Torso
     2300000: Cube
     2300002: Cube_001
     2300004: HeadOld
     2300006: Cube_002
     2300008: Body_002
+    2300010: Beard
+    2300012: Belt
+    2300014: Body
+    2300016: Body_001
+    2300018: Body_003
+    2300020: Boots
+    2300022: Boots_001
+    2300024: Eyepatch
+    2300026: Flask1
+    2300028: Flask2
+    2300030: Head
+    2300032: LeftArm
+    2300034: LeftArm_001
+    2300036: Pants_001
+    2300038: Pants_002
+    2300040: Pants_003
+    2300042: Pants_004
+    2300044: Shirt_001
+    2300046: Shirt_002
+    2300048: Chest
+    2300050: Gun
+    2300052: Hat
+    2300054: LeftBiceps
+    2300056: LeftBoot
+    2300058: LeftHand
+    2300060: LeftThigh
+    2300062: LeftTibia
+    2300064: Legs
+    2300066: RightArm
+    2300068: RightBiceps
+    2300070: RightHand
+    2300072: RightThigh
+    2300074: RightTibia
+    2300076: Sabre
+    2300078: Tummy
+    2300080: Belly
+    2300082: Torso
     3300000: Cube
     3300002: Cube_001
     3300004: HeadOld
     3300006: Cube_002
     3300008: Body_002
+    3300010: Beard
+    3300012: Belt
+    3300014: Body
+    3300016: Body_001
+    3300018: Body_003
+    3300020: Boots
+    3300022: Boots_001
+    3300024: Eyepatch
+    3300026: Flask1
+    3300028: Flask2
+    3300030: Head
+    3300032: LeftArm
+    3300034: LeftArm_001
+    3300036: Pants_001
+    3300038: Pants_002
+    3300040: Pants_003
+    3300042: Pants_004
+    3300044: Shirt_001
+    3300046: Shirt_002
+    3300048: Chest
+    3300050: Gun
+    3300052: Hat
+    3300054: LeftBiceps
+    3300056: LeftBoot
+    3300058: LeftHand
+    3300060: LeftThigh
+    3300062: LeftTibia
+    3300064: Legs
+    3300066: RightArm
+    3300068: RightBiceps
+    3300070: RightHand
+    3300072: RightThigh
+    3300074: RightTibia
+    3300076: Sabre
+    3300078: Tummy
+    3300080: Belly
+    3300082: Torso
     4300000: Cube_001
     4300002: Cube
     4300004: Boots
@@ -145,6 +255,24 @@ ModelImporter:
     4300046: Shirt_001
     4300048: LeftArm
     4300050: Body_003
+    4300052: Legs
+    4300054: LeftThigh
+    4300056: LeftTibia
+    4300058: LeftBoot
+    4300060: RightThigh
+    4300062: RightTibia
+    4300064: Tummy
+    4300066: Chest
+    4300068: RightBiceps
+    4300070: RightArm
+    4300072: RightHand
+    4300074: LeftBiceps
+    4300076: LeftHand
+    4300078: Hat
+    4300080: Sabre
+    4300082: Gun
+    4300084: Belly
+    4300086: Torso
     7400000: Running
     7400002: Idle
     7400004: Running
@@ -188,11 +316,12 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
+    animationImportErrors: "Avatar creation failed:\n\tTransform 'Tummy' for human
+      bone 'Hips' not found\n"
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -653,12 +782,258 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
-    human: []
-    skeleton: []
+    human:
+    - boneName: Tummy
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftThigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightThigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftTibia
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightTibia
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftBoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Boots_001
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftBiceps
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightBiceps
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Hat
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Beard
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: cowboy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tummy
+      parentName: cowboy(Clone)
+      position: {x: 0, y: 2.1789887, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest
+      parentName: Tummy
+      position: {x: -0.000000004656613, y: -0.00038576126, z: 0.5965315}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Belt
+      parentName: Chest
+      position: {x: 0.0017821919, y: -0.005616188, z: -0.6203526}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gun
+      parentName: Belt
+      position: {x: 0.40892598, y: -0.0008716582, z: 0.05377549}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sabre
+      parentName: Belt
+      position: {x: -0.47904313, y: -0.010251045, z: 0.013430655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Chest
+      position: {x: 0.00000018859282, y: -0.02758348, z: 0.66990197}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Beard
+      parentName: Head
+      position: {x: -0.0000018458813, y: -0.21799779, z: 0.323838}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hat
+      parentName: Head
+      position: {x: -0.015105013, y: 0.054090858, z: 1.0413647}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftBiceps
+      parentName: Chest
+      position: {x: -0.49896008, y: 0.016329885, z: 0.52414596}
+      rotation: {x: 0.0027512903, y: 0.6503974, z: -0.0051778844, w: 0.7595715}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftArm
+      parentName: LeftBiceps
+      position: {x: -0.092336714, y: -0.0048683877, z: -0.6605913}
+      rotation: {x: 0.014627304, y: 0.050355468, z: -0.0026464977, w: 0.99862075}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand
+      parentName: LeftArm
+      position: {x: 0.0125697255, y: -0.034597993, z: -0.5888283}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightBiceps
+      parentName: Chest
+      position: {x: 0.47643572, y: 0.008077502, z: 0.546226}
+      rotation: {x: -0.0027194617, y: -0.6428698, z: 0.001223117, w: 0.76596975}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightArm
+      parentName: RightBiceps
+      position: {x: 0.10215694, y: -0.0016545057, z: -0.64249504}
+      rotation: {x: 0.012666098, y: -0.054267183, z: 0.0023739266, w: 0.9984433}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand
+      parentName: RightArm
+      position: {x: -0.0060403943, y: -0.02752328, z: -0.5969525}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Legs
+      parentName: Tummy
+      position: {x: 0.0033592791, y: 0.0015460253, z: 0.0077560246}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftThigh
+      parentName: Legs
+      position: {x: -0.22691034, y: -0.008761883, z: -0.10232404}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftTibia
+      parentName: LeftThigh
+      position: {x: 0.010736719, y: -0.005208969, z: -0.8824024}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftBoot
+      parentName: LeftTibia
+      position: {x: -0.00049318373, y: 0.014315963, z: -0.95538545}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightThigh
+      parentName: Legs
+      position: {x: 0.21700801, y: -0.008761883, z: -0.11249605}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightTibia
+      parentName: RightThigh
+      position: {x: -0.0075529516, y: -0.005208969, z: -0.850744}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boots_001
+      parentName: RightTibia
+      position: {x: -0.0031687468, y: 0.017197967, z: -0.99170613}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -669,10 +1044,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

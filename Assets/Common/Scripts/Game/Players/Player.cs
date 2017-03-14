@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : BaseBehaviour {
     public Entity EntityPrefab;
     private Entity Entity;
 
@@ -16,25 +16,16 @@ public class Player : MonoBehaviour {
     {
         if(!Entity)
         {
-            GameObject entityGameObject = Instantiate(EntityPrefab.gameObject);
-            entityGameObject.transform.SetParent(transform);
-            Entity = entityGameObject.GetComponent<Entity>();
+            Entity = SpawnPrefab(EntityPrefab);
         }
 
         if(!InputHandler)
         {
-            GameObject inputHandlerGameObject = Instantiate(InputHandlerPrefab.gameObject);
-            inputHandlerGameObject.transform.SetParent(transform);
-            InputHandler = inputHandlerGameObject.GetComponent<InputHandler>();
+            InputHandler = SpawnPrefab(InputHandlerPrefab);
 
             Entity.GetComponent<EntityController>().SetInputHandler(InputHandler);
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-        CheckDead();
-	}
 
     internal void SetId(int id)
     {
@@ -45,13 +36,5 @@ public class Player : MonoBehaviour {
     {
         EntitySpawn spawn = GameObject.FindObjectOfType(typeof(EntitySpawn)) as EntitySpawn;
         spawn.Spawn(Entity);
-    }
-
-    private void CheckDead()
-    {
-        if (!Entity.gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
     }
 }

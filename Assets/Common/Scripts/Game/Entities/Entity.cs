@@ -5,7 +5,7 @@ using Assets.Scripts.Enums;
 using System;
 using Assets.Scripts;
 
-public class Entity : MonoBehaviour
+public class Entity : BaseBehaviour
 {
     public EntityStats StatsPrefab;
     private EntityStats Stats;
@@ -13,7 +13,8 @@ public class Entity : MonoBehaviour
     public EntityBody BodyPrefab;
     private EntityBody Body;
 
-    public Item _currentItem;
+    public GameObject ItemPrefab;
+    private GameObject CurrentItem;
 
     private EntityState _state = EntityState.Idle;
     public EntityState State
@@ -29,35 +30,25 @@ public class Entity : MonoBehaviour
         }
     }
 
+    #region MonoBehaviour
     private void Awake()
     {
         print("Awake");
     }
 
-    #region MonoBehaviour
     private void Start()
     {
         print("Start");
 
         if (StatsPrefab != null)
         {
-            GameObject statsGameObject = Instantiate(StatsPrefab.gameObject);
-            statsGameObject.transform.SetParent(transform);
-            Stats = statsGameObject.GetComponent<EntityStats>();
-
+            Stats = SpawnPrefab(StatsPrefab);
         }
 
         if (BodyPrefab != null)
         {
-            GameObject bodyGameObject = Instantiate(BodyPrefab.gameObject);
-            bodyGameObject.transform.SetParent(transform);
-            Body = bodyGameObject.GetComponent<EntityBody>();
+            Body = SpawnPrefab(BodyPrefab);
         }
-    }
-
-    private void Update()
-    {
-        CheckDead();
     }
     #endregion
 
@@ -73,22 +64,12 @@ public class Entity : MonoBehaviour
 
     public void DropCurrentItem()
     {
-        _currentItem = null;
+        CurrentItem = null;
     }
 
     public void UseCurrentItem()
     {
         //_currentItem.Use(this);
-    }
-
-    private bool CheckDead()
-    {
-        if(Stats.Hp <= 0)
-        {
-            Kill();
-        }
-
-        return _state == EntityState.Dead;
     }
 
     public void Kill()
@@ -110,6 +91,11 @@ public class Entity : MonoBehaviour
     {
         print("Jump");
         Body.Jump(Stats.JumpStrength);
+    }
+
+    public void Punch()
+    {
+        Body.Punch();
     }
 
     public void Reset(Vector3 position)

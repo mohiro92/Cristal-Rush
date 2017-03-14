@@ -54,4 +54,4 @@ MonoBehaviour:
   Attack: 10
   Hp: 100
   Speed: 10
-  JumpStrength: 10
+  JumpStrength: 15

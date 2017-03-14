@@ -9,31 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1965791524143146}
+  m_RootGameObject: {fileID: 1370504459594746}
   m_IsPrefabParent: 1
---- !u!1 &1965791524143146
+--- !u!1 &1370504459594746
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4726383111927874}
-  - component: {fileID: 114397522409724934}
-  - component: {fileID: 114008028507384930}
+  - component: {fileID: 4323938066344076}
+  - component: {fileID: 114064215669672010}
   m_Layer: 0
-  m_Name: Cowboy
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4726383111927874
+--- !u!4 &4323938066344076
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1965791524143146}
+  m_GameObject: {fileID: 1370504459594746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,30 +40,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114008028507384930
+--- !u!114 &114064215669672010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1965791524143146}
+  m_GameObject: {fileID: 1370504459594746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681ec965e64e6c1479c063af0a2d6db5, type: 3}
+  m_Script: {fileID: 11500000, guid: 929c9c2d2328ab84586fa0b1fbd57577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114397522409724934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1965791524143146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5d544c1f244c646a992f6538e51dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StatsPrefab: {fileID: 114736896626186422, guid: c77de3b1b9915af4b9a4cee0058928f1,
+  EntityPrefab: {fileID: 114397522409724934, guid: 4ad78faf961fca147b4a5e7e8545d7fc,
     type: 2}
-  BodyPrefab: {fileID: 114632818580041366, guid: 04b954ce676dabf41b7efde3cdbf2f46,
+  InputHandlerPrefab: {fileID: 114201154544327098, guid: 93d8f30c0a412a340867ce9a350f5120,
     type: 2}
-  _currentItem: {fileID: 0}

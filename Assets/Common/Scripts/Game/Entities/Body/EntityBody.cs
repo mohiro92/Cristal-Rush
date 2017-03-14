@@ -4,8 +4,14 @@ using UnityEngine.UI;
 using Assets.Scripts;
 using System;
 
-public class EntityBody : MonoBehaviour
+public class EntityBody : BaseBehaviour
 {
+    public EntityTorso TorsoPrefab;
+    private EntityTorso entityTorso;
+
+    public EntityLegs LegsPrefab;
+    private EntityLegs entityLegs;
+
     private bool _isJumping;
     private Rigidbody rigidBody;
 
@@ -23,6 +29,24 @@ public class EntityBody : MonoBehaviour
     }
 
     #region MonoBehaviour
+    private void Awake()
+    {
+        if(!entityTorso)
+        {
+            entityTorso = SpawnPrefab(TorsoPrefab);
+        }
+
+        if(!entityLegs)
+        {
+            entityLegs = SpawnPrefab(LegsPrefab);
+        }
+
+        if (!rigidBody)
+        {
+            rigidBody = GetComponent<Rigidbody>();
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
@@ -37,33 +61,46 @@ public class EntityBody : MonoBehaviour
     #endregion
     
     public void Move(Vector3 direction)
-    {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        
+    {           
         ResetHorizontalVelocity();
 
-        // Rotate towards direction
-        Quaternion newRotation = Quaternion.LookRotation(direction);
-        rigidbody.MoveRotation(newRotation);
-        // "Push" body to direction
-        rigidbody.AddForce(direction);
-              
-        GetComponent<Animator>().SetBool("IsRunning", true);
+        if (direction.IsZero())
+        {
+            print("Idle");
+            entityTorso.Idle();
+            entityLegs.Idle();
+        } else
+        {
+            print("Running");
+            // Rotate towards direction
+            Quaternion newRotation = Quaternion.LookRotation(-direction);
+            rigidBody.MoveRotation(newRotation);
+
+            // "Push" body to direction
+            rigidBody.velocity = new Vector3(direction.x, rigidBody.velocity.y, direction.z);
+            
+            entityTorso.Run();
+            entityLegs.Run();
+        }
     }
 
     public void Stop()
     {
         ResetHorizontalVelocity();
-        GetComponent<Animator>().SetBool("IsRunning", false);
     }
 
     public void Jump(float strength)
     {
         if (_isJumping)
             return;
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
+
         IsJumping = true;
-        rigidbody.velocity = new Vector3(rigidbody.velocity.x, strength, rigidbody.velocity.z);
+        rigidBody.velocity = new Vector3(rigidBody.velocity.x, strength, rigidBody.velocity.z);
+    }
+
+    public void Punch()
+    {
+        entityTorso.Punch();
     }
 
     public void SetPosition(Vector3 position)
@@ -80,9 +117,7 @@ public class EntityBody : MonoBehaviour
 
     private void ResetHorizontalVelocity()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-
-        rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
-        rigidbody.angularVelocity = new Vector3(0, rigidbody.velocity.y, 0);
+        rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+        rigidBody.angularVelocity = Vector3.zero;
     }
 }

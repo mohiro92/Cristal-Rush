@@ -21,8 +21,8 @@ TagManager:
   - Terrain
   - Ground
   - Weapon
+  - EntityBody
   - Player
-  - Entity
   - Item
   - Detachable
   - Hitable
